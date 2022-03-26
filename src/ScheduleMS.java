@@ -20,45 +20,19 @@ public class ScheduleMS {
 			
 			switch (num) {
 			case 1:
-				System.out.print("Type your schedule category (ex : Meeting) : ");
-				sch = input.next();
-				System.out.print("Date's year? : ");
-				year = input.nextInt();
-				System.out.print("Date's month? : ");
-				mon = input.nextInt();
-				System.out.print("Date's day? : ");
-				day = input.nextInt();
-				System.out.println("The information is collected.");
-				System.out.println("------------------------------------------------------");
+				addSchedule(year, mon, day, num, sch);
 				break;
 			case 2:
-				sch = null;
-				year = 0;
-				mon = 0;
-				day = 0;
-				System.out.println("The data is deleted.");
-				System.out.println("------------------------------------------------------");
+				deleteSchedule(year, mon, day, num, sch);
 				break;
 			case 3:
-				System.out.println("Retype Your Schedule.");
-				System.out.print("Type your schedule category (ex : Meeting) : ");
-				sch = input.next();
-				System.out.print("Date's year? : ");
-				year = input.nextInt();
-				System.out.print("Date's month? : ");
-				mon = input.nextInt();
-				System.out.print("Date's day? : ");
-				day = input.nextInt();
-				System.out.println("The information is collected.");
-				System.out.println("------------------------------------------------------");
+				editSchedule(year, mon, day, num, sch);
 				break;
 			case 4:
-				System.out.printf("Your %s is going to be %d/%d/%d.\n", sch, year, mon, day);
-				System.out.println("------------------------------------------------------");
+				viewStudents(year, mon, day, num, sch);
 				break;
 			case 5:
-				System.out.println("Return to Menu....");
-				System.out.println("------------------------------------------------------");
+				backmenu();
 				break;
 			case 6:
 				break;
@@ -70,5 +44,55 @@ public class ScheduleMS {
 		}
 		System.out.println("The Program is ended.");
 	}
-
+	
+	public static void addSchedule(int year, int mon, int day, int num, String sch) {
+		
+		Scanner input = new Scanner(System.in);
+		
+		System.out.print("Type your schedule category (ex : Meeting) : ");
+		sch = input.next();
+		System.out.print("Date's year? : ");
+		year = input.nextInt();
+		System.out.print("Date's month? : ");
+		mon = input.nextInt();
+		System.out.print("Date's day? : ");
+		day = input.nextInt();
+		System.out.println("The information is collected.");
+		System.out.println("------------------------------------------------------");
+	}
+	
+	public static void deleteSchedule(int year, int mon, int day, int num, String sch) {
+		sch = null;
+		year = 0;
+		mon = 0;
+		day = 0;
+		System.out.println("The data is deleted.");
+		System.out.println("------------------------------------------------------");
+		
+	}
+	
+	public static void editSchedule(int year, int mon, int day, int num, String sch) {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Retype Your Schedule.");
+		System.out.print("Type your schedule category (ex : Meeting) : ");
+		sch = input.next();
+		System.out.print("Date's year? : ");
+		year = input.nextInt();
+		System.out.print("Date's month? : ");
+		mon = input.nextInt();
+		System.out.print("Date's day? : ");
+		day = input.nextInt();
+		System.out.println("The information is collected.");
+		System.out.println("------------------------------------------------------");
+	}
+	
+	public static void viewStudents(int year, int mon, int day, int num, String sch) {
+		System.out.printf("Your %s is going to be %d/%d/%d.\n", sch, year, mon, day);
+		System.out.println("------------------------------------------------------");
+	}
+	
+	public static void backmenu() {
+		System.out.println("Return to Menu....");
+		System.out.println("------------------------------------------------------");
+	}
 }
