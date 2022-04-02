@@ -25,7 +25,7 @@ public class ScheduleMS {
 				schfunction.viewOneSchedule(); // 스케줄 보기 함수 호출
 				break;
 			case 5:
-				schfunction.viewAllSchedule();
+				schfunction.viewAllSchedule(); // 전체 스케줄 보기 함수 호출
 			case 6:
 				break;
 			default:

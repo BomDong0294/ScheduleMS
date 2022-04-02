@@ -134,8 +134,8 @@ public class SchManager {
 		System.out.println("------------------------------------------------------");
 	}
 	
-	public void viewAllSchedule() {
-		if (schedule_list.size() == 0) { //리스트에 아무것도 없으면
+	public void viewAllSchedule() { // 모든 스케줄 출력
+		if (schedule_list.size() == 0) { // 리스트에 아무것도 없으면
 			System.out.println("The schedules aren't on the datbase."); // 메뉴로 돌아감
 		} else { // 리스트에 하나라도 정보가 있으면
 			for (int i=0; i<schedule_list.size();i++) { // 스케줄 리스트의 크기만큼 반복
