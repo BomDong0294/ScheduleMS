@@ -1,4 +1,12 @@
 import java.util.Scanner;
+
+import Schedule.GStudySch;
+import Schedule.MeetingSch;
+import Schedule.RestSch;
+import Schedule.Schedules;
+import Schedule.ShoppingSch;
+import Schedule.StudySch;
+
 import java.util.*;
 
 public class SchManager {
@@ -10,37 +18,45 @@ public class SchManager {
 	ArrayList<Schedules> schedule_list = new ArrayList<Schedules>(); // 스케줄 리스트 선언
 	
 	public void addSchedule() { // 스케줄 추가
-		Schedules schedule = new Schedules(); // 새 스케줄 메서드 추가
-		
-		System.out.print("Type your schedule category (ex : Meeting) : ");
-		String sch = input.next(); // 스케줄 종류 입력
-		schedule.setSchedule(sch); // 스케줄 종류 메서드에 추가
-		
-		System.out.print("Type your schedule serial number : ");
-		int snum = input.nextInt(); // 고유번호 입력
-		schedule.setSerial(snum); // 고유번호 메서드에 추가
-		
-		System.out.print("Date's year? : ");
-		int year = input.nextInt(); // 연도 입력
-		schedule.setYear(year); // 연도 메서드에 추가
-		
-		System.out.print("Date's month? : ");
-		int mon = input.nextInt(); // 월 입력
-		schedule.setMonth(mon); // 월 메서드에 추가
-		
-		System.out.print("Date's day? : ");
-		int day = input.nextInt(); // 일 입력
-		schedule.setDay(day); // 일 메서드에 추가
-		
-		System.out.print("At hour? : ");
-		int hour = input.nextInt(); // 시 입력
-		schedule.setHour(hour); // 시 메서드에 추가
-		
-		System.out.print("At minute? : ");
-		int min = input.nextInt(); // 분 입력
-		schedule.setMinute(min); // 분 메서드에 추가
-		
-		schedule_list.add(schedule); // 추가된 메서드를 리스트에 추가
+		int kind = 0;
+		Schedules schedule;
+		while (kind != 1 && kind != 2 && kind != 3 && kind != 4 && kind != 5) {
+			System.out.println("1) Meeting");
+			System.out.println("2) Shopping");
+			System.out.println("3) Studying");
+			System.out.println("4) GroupStudying");
+			System.out.println("5) Resting");
+			System.out.print("Type your schedule category (1~5) : ");
+			kind = input.nextInt();
+			if (kind == 1) {
+				schedule = new MeetingSch();
+				schedule.getScheduleKind(input);
+				schedule_list.add(schedule); // 추가된 메서드를 리스트에 추가
+				break;
+			} else if (kind == 2) {
+				schedule = new ShoppingSch();
+				schedule.getScheduleKind(input);
+				schedule_list.add(schedule); // 추가된 메서드를 리스트에 추가
+				break;
+			} else if (kind == 3) {
+				schedule = new StudySch();
+				schedule.getScheduleKind(input);
+				schedule_list.add(schedule); // 추가된 메서드를 리스트에 추가
+				break;
+			} else if (kind == 4) {
+				schedule = new GStudySch();
+				schedule.getScheduleKind(input);
+				schedule_list.add(schedule); // 추가된 메서드를 리스트에 추가
+				break;
+			} else if (kind == 5) {
+				schedule = new RestSch();
+				schedule.getScheduleKind(input);
+				schedule_list.add(schedule); // 추가된 메서드를 리스트에 추가
+				break;
+			} else {
+				System.out.print("Type your schedule category (1~5) : ");
+			}
+		}
 		
 		System.out.println("The information is collected.");
 		System.out.println("------------------------------------------------------");
@@ -71,9 +87,6 @@ public class SchManager {
 		
 		for (int i=0; i<schedule_list.size();i++) { // 스케줄 리스트의 크기만큼 반복
 			if (schedule_list.get(i).getSerial() == serial) { // 스케줄 리스트의 고유번호가 입력한 고유번호와 일치하면
-				System.out.print("Type your schedule category (ex : Meeting) : ");
-				String sch = input.next(); // 스케줄 종류 입력
-				schedule_list.get(i).setSchedule(sch); // 스케줄 종류를 기존 메서드에 덧씌움
 				
 				System.out.print("Date's year? : ");
 				int year = input.nextInt(); // 연도 입력
@@ -114,12 +127,10 @@ public class SchManager {
 		
 		for (int i=0; i<schedule_list.size();i++) { // 스케줄 리스트의 크기만큼 반복
 			if (schedule_list.get(i).getSerial() == serial) { // 스케줄 리스트의 고유번호가 입력한 고유번호와 일치하면
-				String sch = schedule_list.get(i).getSchedule();
-				System.out.printf("The %s will be at",sch);
 				int year = schedule_list.get(i).getYear();
 				int mon = schedule_list.get(i).getMonth();
 				int day = schedule_list.get(i).getDay();
-				System.out.printf(" %d/%02d/%02d",year,mon,day);
+				System.out.printf("Your Schedule is %d/%02d/%02d",year,mon,day);
 				int hour = schedule_list.get(i).getHour();
 				int min = schedule_list.get(i).getMinute();
 				System.out.printf(" %02d:%02d\n", hour, min); // 스케줄 출력
@@ -134,20 +145,19 @@ public class SchManager {
 		System.out.println("------------------------------------------------------");
 	}
 	
-	public void viewAllSchedule() { // 모든 스케줄 출력
+	public void viewAllSchedules() { // 모든 스케줄 출력
 		if (schedule_list.size() == 0) { // 리스트에 아무것도 없으면
 			System.out.println("The schedules aren't on the datbase."); // 메뉴로 돌아감
 		} else { // 리스트에 하나라도 정보가 있으면
 			for (int i=0; i<schedule_list.size();i++) { // 스케줄 리스트의 크기만큼 반복
-				String sch = schedule_list.get(i).getSchedule();
-				System.out.printf("The %s will be at",sch);
 				int year = schedule_list.get(i).getYear();
 				int mon = schedule_list.get(i).getMonth();
 				int day = schedule_list.get(i).getDay();
-				System.out.printf(" %d/%02d/%02d",year,mon,day);
+				System.out.printf("Your Schedule is %d/%02d/%02d",year,mon,day);
 				int hour = schedule_list.get(i).getHour();
 				int min = schedule_list.get(i).getMinute();
 				System.out.printf(" %02d:%02d\n", hour, min); // 스케줄 출력
+				System.out.printf("there are %d schedules in database.", schedule_list.size());
 			}
 		}
 		System.out.println("------------------------------------------------------");
@@ -160,7 +170,7 @@ public class SchManager {
 		System.out.println("4. View One Schedule"); // 특정 스케줄 표시
 		System.out.println("5. View All Schedule"); // 전체 스케줄 표시
 		System.out.println("6. Exit"); // 종료 표시
-		System.out.print("Select one number between 1 to 5 : "); //입력하라고 표시
+		System.out.print("Select one number between 1 to 6 : "); //입력하라고 표시
 		
 	}
 }
