@@ -6,3 +6,4 @@ public enum ScheduleKind {
 	Studying,
 	Resting
 }
+//.

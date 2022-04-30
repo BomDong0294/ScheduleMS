@@ -59,3 +59,4 @@ public class RestSch extends Schedules { // 일반 스케줄 클래스를 상속
 		this.setMoney(-1); // printmoreInfo 메서드의 조건구별을 위한 돈 초기화
 	}
 }
+//.

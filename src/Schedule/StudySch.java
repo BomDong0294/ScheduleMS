@@ -58,3 +58,4 @@ public class StudySch extends Schedules { // 일반 스케줄 클래스를 상�
 		this.setMoney(-2); // printmoreInfo 메서드의 조건구별을 위한 돈 변수 초기화
 	}
 }
+//.
