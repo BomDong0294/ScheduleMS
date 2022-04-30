@@ -10,12 +10,14 @@ public class Schedules {
 	protected int snum; // 고유번호 변수 선언
 	protected int hour; // 시 변수 선언
 	protected int min; // 분 변수 선언
-	protected int peoplecount; // meeting, group studying
-	protected int money; // shopping, resting
-	protected int schhour; // Studying
-	protected int schday; // resting
+	protected int peoplecount; // meeting, group studying에서 사용되는 변수
+	protected int money; // shopping, resting에서 사용되는 변수
+	protected int schhour; // Studying에서 사용되는 변수
+	protected int schday; // resting에서 사용되는 변수
 	
 	public Schedules() {}
+	
+	// 여기서부터 112번째 줄까지 있는 변수들을 getter, setter메서드 구현한 것
 	
 	public Schedules(ScheduleKind kind) {
 		this.kind = kind;
@@ -30,51 +32,51 @@ public class Schedules {
 	}
 	
 	public int getSerial() {
-		return snum; // 고유번호 반환 메서드 추가
+		return snum;
 	}
 	
 	public void setSerial(int snum) {
-		this.snum = snum; // 고유번호 지칭 메서드 추가
+		this.snum = snum;
 	}
 	
 	public int getYear() {
-		return year; // 연도 반환 메서드 추가
+		return year;
 	}
 	
 	public void setYear(int year) {
-		this.year = year; // 연도 지칭 메서드 추가
+		this.year = year; 
 	}
 	
 	public int getMonth() {
-		return mon; // 월 반환 메서드 추가
+		return mon;
 	}
 	
 	public void setMonth(int mon) {
-		this.mon = mon; // 월 지칭 메서드 추가
+		this.mon = mon; 
 	}
 	
 	public int getDay() {
-		return day; // 일 반환 메서드 추가
+		return day; 
 	}
 	
 	public void setDay(int day) {
-		this.day = day; // 일 지칭 메서드 추가
+		this.day = day;
 	}
 	
 	public int getHour() {
-		return hour; // 시 반환 메서드 추가
+		return hour;
 	}
 	
 	public void setHour(int hour) {
-		this.hour = hour; // 시 지칭 메서드 추가
+		this.hour = hour;
 	}
 	
 	public int getMinute() {
-		return min; // 분 반환 메서드 추가
+		return min;
 	}
 	
 	public void setMinute(int min) {
-		this.min = min; // 분 지칭 메서드 추가
+		this.min = min;
 	}
 	
 	public int getPeoplecount() {
@@ -121,11 +123,11 @@ public class Schedules {
 		this.money = money;
 		this.schhour = schhour;
 		this.schday = schday;
-	} // 스케줄 생성자 추가
+	} // 모든 변수가 다 있는 스케줄 생성자 추가
 	
-	public void printInfo() {
-		String skind = "none";
-		switch(this.kind) {
+	public void printInfo() { // 정보를 출력하는 메서드
+		String skind = "none"; //kind 변수 초기화
+		switch(this.kind) { // enum에 따라 kind변수를 초기화하는 메서드
 		case Meeting:
 			skind = "Meeting";
 			break;
@@ -144,26 +146,26 @@ public class Schedules {
 		System.out.printf(" %02d:%02d\n", hour, min);
 	}
 	
-	public void printmoreInfo() {
+	public void printmoreInfo() { // 각 자식 클래스의 조건에 따라 부가적인 정보를 출력하는 메서드
 		if (this.money == -1 && this.schday == -1) {
 			System.out.printf("%d people participate the meeting.\n", peoplecount);
 			System.out.printf("%dhour meeting will be held.\n", schhour);
-		}
+		} // 만약 위 조건이 성립하면 meeting에 해당되는 객체의 부가적인 정보 출력
 		if (this.schday == -1 && this.schhour == -1) {
 			System.out.printf("You have %d won. (KRW)\n", money);
 			System.out.printf("%d people participate the shopping.\n", peoplecount);
-		}
+		} // 만약 위 조건이 성립하면 shopping에 해당되는 객체의 부가적인 정보 출력
 		if (this.schday == -1 && this.money == -2) {
 			System.out.printf("%d people participate the studying.\n", peoplecount);
-			System.out.printf("%dhour meeting will be held.\n", schhour);
-		}
+			System.out.printf("%dhour studying will be held.\n", schhour);
+		} // 만약 위 조건이 성립하면 studying에 해당되는 객체의 부가적인 정보 출력
 		if (this.schhour == -1 && this.schhour == -1) {
 			System.out.printf("%d people participate the resting.\n", peoplecount);
 			System.out.printf("%d day planned.\n",schday);
-		}
+		} // 만약 위 조건이 성립하면 resting에 해당되는 객체의 부가적인 정보 출력
 	}
 	
-	public void getScheduleInput(Scanner input) {
+	public void getScheduleInput(Scanner input) { // 기본형 스케줄 입력 메서드 선언
 		System.out.print("Type your schedule serial number : ");
 		int snum = input.nextInt(); // 고유번호 입력
 		this.setSerial(snum);
