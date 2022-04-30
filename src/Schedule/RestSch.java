@@ -3,7 +3,12 @@ package Schedule;
 import java.util.Scanner;
 
 public class RestSch extends Schedules {
-	public void getScheduleKind(Scanner input) {
+	
+	public RestSch(ScheduleKind kind) {
+		this.kind = kind;
+	}
+	
+	public void getScheduleInput(Scanner input) {
 		
 		System.out.print("Type your schedule serial number : ");
 		int snum = input.nextInt(); // 고유번호 입력
@@ -31,18 +36,27 @@ public class RestSch extends Schedules {
 		
 		char res = 'a';
 		while (res != 'y' && res != 'Y' && res != 'n' && res != 'N') {
-			System.out.print("Are you sleepy? (Y/N) : ");
+			System.out.print("Will you sleep two days or more? (Y/N) : ");
 			res = input.next().charAt(0);
 			if (res == 'y' || res == 'Y') {
-				System.out.println("Please... Rest... or you'll be turn off...");
+				System.out.print("How much you sleep at there? : ");
+				int setday = input.nextInt();
+				this.setDay(setday);
+				System.out.println("How many people participate in travel? : ");
+				int peoplecount = input.nextInt();
+				this.setPeoplecount(peoplecount);
 				break;
 			} else if (res == 'n' || res == 'N') {
-				System.out.println("Aren't you study hard??");
-				System.out.println("...NoNo it's joke haha");
-				System.out.println("You would be fine after taking a rest!");
+				System.out.println("How many people participate in travel? : ");
+				int peoplecount = input.nextInt();
+				this.setPeoplecount(peoplecount);
+				System.out.println("Check your schedule once again.");
+				this.setDay(1);
 				break;
 			} else {
 			}
 		}
+		this.setSchhour(-1);
+		this.setMoney(-1);
 	}
 }

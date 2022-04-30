@@ -4,7 +4,11 @@ import java.util.Scanner;
 
 public class ShoppingSch extends Schedules {
 	
-	public void getScheduleKind(Scanner input) {
+	public ShoppingSch(ScheduleKind kind) {
+		this.kind = kind;
+	}
+	
+	public void getScheduleInput(Scanner input) {
 			
 		System.out.print("Type your schedule serial number : ");
 		int snum = input.nextInt(); // 고유번호 입력
@@ -32,17 +36,26 @@ public class ShoppingSch extends Schedules {
 		
 		char res = 'a';
 		while (res != 'y' && res != 'Y' && res != 'n' && res != 'N') {
-			System.out.print("Does your house need many daily necessity? (Y/N) : ");
+			System.out.print("Does some people participates? : (Y/N) : ");
 			res = input.next().charAt(0);
 			if (res == 'y' || res == 'Y') {
-				System.out.println("You should give more time to shopping.");
+				System.out.print("How many people go shopping with you? : ");
+				int peoplecount = input.nextInt();
+				this.setPeoplecount(peoplecount+1);
+				System.out.print("How much money do you have? : ");
+				int money = input.nextInt();
+				this.setMoney(money);
 				break;
 			} else if (res == 'n' || res == 'N') {
-				System.out.println("Please check your needs.");
-				System.out.println("If you don't have to, It's ok.");
+				this.setPeoplecount(1);
+				System.out.print("How much money do you have? : ");
+				int money = input.nextInt();
+				this.setMoney(money);
 				break;
 			} else {
 			}
 		}
+		this.setSchday(-1);
+		this.setSchhour(-1);
 	}
 }

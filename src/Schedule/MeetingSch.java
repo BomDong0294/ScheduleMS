@@ -3,9 +3,12 @@ package Schedule;
 import java.util.Scanner;
 
 public class MeetingSch extends Schedules {
-	public MeetingSch() {}
-	public void getScheduleKind(Scanner input) {
-		
+	
+	public MeetingSch(ScheduleKind kind) {
+		this.kind = kind;
+	}
+	
+	public void getScheduleInput(Scanner input) {
 		System.out.print("Type your schedule serial number : ");
 		int snum = input.nextInt(); // 고유번호 입력
 		this.setSerial(snum);
@@ -32,16 +35,28 @@ public class MeetingSch extends Schedules {
 		
 		char res = 'a';
 		while (res != 'y' && res != 'Y' && res != 'n' && res != 'N') {
-			System.out.print("Is this meeting regular meeting? (Y/N) : ");
+			System.out.print("Does professor participate that meeting? (Y/N) : ");
 			res = input.next().charAt(0);
 			if (res == 'y' || res == 'Y') {
-				System.out.println("You have another meeting at 7days later.");
+				System.out.println("All people should participate this meeting.");
+				int peoplecount = 10;
+				this.setPeoplecount(peoplecount);
+				System.out.print("How much time you planned? (At hour) : ");
+				int schhour = input.nextInt();
+				this.setSchhour(schhour);
 				break;
 			} else if (res == 'n' || res == 'N') {
-				System.out.println("There isn't another meeting soon.");
+				System.out.print("How many people participate this meeting? : ");
+				int peoplecount = input.nextInt();
+				this.setPeoplecount(peoplecount);
+				System.out.print("How much time you planned? (At hour) : ");
+				int schhour = input.nextInt();
+				this.setSchhour(schhour);
 				break;
 			} else {
 			}
 		}
+		this.setMoney(-1);
+		this.setSchday(-1);
 	}
 }

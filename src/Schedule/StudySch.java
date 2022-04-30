@@ -3,7 +3,12 @@ package Schedule;
 import java.util.Scanner;
 
 public class StudySch extends Schedules {
-	public void getScheduleKind(Scanner input) {
+	
+	public StudySch(ScheduleKind kind) {
+		this.kind = kind;
+	}
+	
+	public void getScheduleInput(Scanner input) {
 		
 		System.out.print("Type your schedule serial number : ");
 		int snum = input.nextInt(); // 고유번호 입력
@@ -34,13 +39,22 @@ public class StudySch extends Schedules {
 			System.out.print("Is it a group project? (Y/N) : ");
 			res = input.next().charAt(0);
 			if (res == 'y' || res == 'Y') {
-				System.out.println("Please move this schedule to group category.");
+				System.out.print("How many people participate in the project? : ");
+				int peoplecount = input.nextInt();
+				this.setPeoplecount(peoplecount+1);
+				System.out.print("How much time you scheduled?");
+				int schhour = input.nextInt();
+				this.setSchhour(schhour);
 				break;
 			} else if (res == 'n' || res == 'N') {
-				System.out.println("Please check your results.");
-				break;
+				System.out.print("How much time you scheduled?");
+				int schhour = input.nextInt();
+				this.setSchhour(schhour);
+				this.setPeoplecount(1);
 			} else {
 			}
 		}
+		this.setSchday(-1);
+		this.setMoney(-2);
 	}
 }
