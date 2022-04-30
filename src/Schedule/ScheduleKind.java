@@ -7,3 +7,8 @@ public enum ScheduleKind {
 	Resting
 }
 //.
+//The polymorphism is added to classes.
+//Method overriding is updated at classes.
+//More information is printable.
+//All child classes are connected.
+//All print methods go to "Schedules.java".
