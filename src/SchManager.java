@@ -135,4 +135,3 @@ public class SchManager {
 		System.out.print("Select one number between 1 to 6 : "); //입력하라고 표시
 	}
 }
-//.

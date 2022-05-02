@@ -59,4 +59,3 @@ public class MeetingSch extends Schedules { // 일반 스케줄 클래스를 상
 		this.setSchday(-1); // 구별을 위한 예정일 변수 초기화
 	}
 }
-//.

@@ -111,6 +111,16 @@ public class Schedules {
 		this.schday = schday;
 	}
 	
+	public Schedules(ScheduleKind kind, int snum, int year, int mon, int day, int hour, int min) {
+		this.kind = kind;
+		this.snum = snum;
+		this.year = year;
+		this.mon = mon;
+		this.day = day;
+		this.hour = hour;
+		this.min = min;
+	} // 기본형 스케줄 생성자 추가 단, 이 프로젝트에서는 당장 사용하지 않음.
+	
 	public Schedules(ScheduleKind kind, int snum, int year, int mon, int day, int hour, int min, int peoplecount, int money, int schhour, int schday) {
 		this.kind = kind;
 		this.snum = snum;
@@ -123,7 +133,7 @@ public class Schedules {
 		this.money = money;
 		this.schhour = schhour;
 		this.schday = schday;
-	} // 모든 변수가 다 있는 스케줄 생성자 추가
+	} // 모든 변수가 다 있는 스케줄 생성자 추가 (완전형 생성자)
 	
 	public void printInfo() { // 정보를 출력하는 메서드
 		String skind = "none"; //kind 변수 초기화
@@ -191,4 +201,3 @@ public class Schedules {
 		this.setMinute(min);
 	}
 }
-//.
