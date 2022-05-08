@@ -48,7 +48,7 @@ public class RestSch extends Schedule implements ScheduleInput { // 일반 스�
 				System.out.print("How much you sleep at there? : ");
 				int setday = input.nextInt();
 				this.setDay(setday); // 숙박하는 기간 저장 (일 단위)
-				System.out.println("How many people participate in travel? : ");
+				System.out.print("How many people participate in travel? : ");
 				int peoplecount = input.nextInt();
 				this.setPeoplecount(peoplecount); // 참석 인원 변수 입력 및 저장
 				break; // 반복문 탈출
@@ -64,8 +64,8 @@ public class RestSch extends Schedule implements ScheduleInput { // 일반 스�
 	}
 	public void printInfo() { // 정보를 출력하는 메서드
 		String skind = "Resting"; //kind 변수 초기화
-		System.out.printf("Your %s is %d/%02d/%02d",skind,year,mon,day); // 날짜 출력
-		System.out.printf("%d people participate the resting.\n", peoplecount); // 참여 인원 출력
+		System.out.printf("Your %s is %d/%02d/%02d\n",skind,year,mon,day); // 날짜 출력
+		System.out.printf("%d people participate in the resting.\n", peoplecount); // 참여 인원 출력
 		System.out.printf("%d day planned.\n",schday); // 예정 휴식 기간 출력
 	}
 	// 예정 휴식 기간 변수에 대한 getter, setter

@@ -75,7 +75,7 @@ public class ShoppingSch extends Schedule implements ScheduleInput { // 일반 �
 		System.out.printf("Your %s is %d/%02d/%02d",skind,year,mon,day); // 날짜 출력
 		System.out.printf(" %02d:%02d\n", hour, min); // 시간 출력
 		System.out.printf("You have %d won. (KRW)\n", money); // 소유중인 금액 출력
-		System.out.printf("%d people participate the shopping.\n", peoplecount); // 참여 인원수 출력
+		System.out.printf("%d people participate in the shopping.\n", peoplecount); // 참여 인원수 출력
 	}
 	// money 변수에 대한 getter 및 setter
 	public int getMoney() {

@@ -73,7 +73,7 @@ public class StudySch extends Schedule implements ScheduleInput { // 일반 스�
 		String skind = "Studying"; //kind 변수 초기화
 		System.out.printf("Your %s is %d/%02d/%02d",skind,year,mon,day);
 		System.out.printf(" %02d:%02d\n", hour, min);
-		System.out.printf("%d people participate the studying.\n", peoplecount);
+		System.out.printf("%d people participate in the studying.\n", peoplecount);
 		System.out.printf("%dhour studying will be held.\n", schhour);
 	}
 
