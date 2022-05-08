@@ -3,7 +3,7 @@ public class ScheduleMS {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		SchManager schfunction = new SchManager(input); // SchManager 클래스 호출
+		ScheduleMethod schfunction = new ScheduleMethod(input); // SchManager 클래스 호출
 		int num = 0; // 단축번호 변수 선언 및 초기화
 		while (num != 6) { // 6이 나올때까지 반복
 			

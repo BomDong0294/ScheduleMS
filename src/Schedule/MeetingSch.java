@@ -2,13 +2,27 @@ package Schedule;
 
 import java.util.Scanner;
 
-public class MeetingSch extends Schedules { // 일반 스케줄 클래스를 상속받음
+public class MeetingSch extends Schedule implements ScheduleInput { // 일반 스케줄 클래스를 상속받음
 	
+	protected int schhour; // 일정 시간 변수 선언
+
 	public MeetingSch(ScheduleKind kind) {
-		this.kind = kind;
-	}
+		super(kind);
+	} // 미팅 스케줄 kind 변수만 있는 생성자 선언 
 	
-	public void getScheduleInput(Scanner input) { // meeting에 맞는 스케줄 입력 메서드 선언
+	public MeetingSch(ScheduleKind kind, int snum, int year, int mon, int day, int hour, int min, int peoplecount, int schhour) {
+		super(kind);
+		this.snum = snum;
+		this.year = year;
+		this.mon = mon;
+		this.day = day;
+		this.hour = hour;
+		this.min = min;
+		this.peoplecount = peoplecount;
+		this.schhour = schhour;
+	} // 미팅 스케줄 생성자 선언 및 저장
+	
+	public void getScheduleInput(Scanner input) { // meeting에 맞는 추상화된 스케줄 입력 메서드 선언
 		System.out.print("Type your schedule serial number : ");
 		int snum = input.nextInt(); // 고유번호 입력
 		this.setSerial(snum);
@@ -55,7 +69,23 @@ public class MeetingSch extends Schedules { // 일반 스케줄 클래스를 상
 			} else {
 			}
 		}
-		this.setMoney(-1); // 구별을 위한 돈 변수 초기화
-		this.setSchday(-1); // 구별을 위한 예정일 변수 초기화
 	}
+	
+	public void printInfo() { // 정보를 출력하는 메서드
+		String skind = "Meeting"; //kind 변수 초기화
+		System.out.printf("Your %s is %d/%02d/%02d",skind,year,mon,day); // 날짜 출력
+		System.out.printf(" %02d:%02d\n", hour, min); // 시간 출력
+		System.out.printf("%d people participate the meeting.\n", peoplecount); // 참여 인원수 출력
+		System.out.printf("%dhour meeting will be held.\n", schhour); // 회의 시간 출력
+	}
+	
+	// 회의 시간에 대한 Getter, Setter 선언
+	public int getSchhour() {
+		return schhour;
+	}
+
+	public void setSchhour(int schhour) {
+		this.schhour = schhour;
+	}
+	
 }
