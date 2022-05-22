@@ -1,9 +1,11 @@
 package Schedule;
+import java.io.Serializable;
 import java.util.Scanner;
 
 import Exceptions.Exceptions;
 
-public abstract class Schedule implements ScheduleInput {
+public abstract class Schedule implements ScheduleInput, Serializable {
+	private static final long serialVersionUID = 8101442141971410181L;
 	protected ScheduleKind kind = ScheduleKind.Meeting;
 	protected int year; // 연도 변수 선언
 	protected int mon; // 월 변수 선언
@@ -40,7 +42,7 @@ public abstract class Schedule implements ScheduleInput {
 	}
 	public void setYear(int year) throws Exceptions {
 		if (year < 2022) {
-			throw new Exceptions ();
+			throw new Exceptions();
 		}
 		this.year = year; 
 	}

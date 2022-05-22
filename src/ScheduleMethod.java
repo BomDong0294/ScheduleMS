@@ -4,11 +4,15 @@ import Schedule.ScheduleInput; // 인터페이스 임포트
 import Schedule.ScheduleKind; // 스케줄 종류 enum 임포트
 import Schedule.ShoppingSch; // 쇼핑 일정 클래스 임포트
 import Schedule.StudySch; // 공부 일정 클래스 임포트
+
+import java.io.Serializable;
 import java.util.*; // ArrayList 사용할 유틸리티 임포트
 
-public class ScheduleMethod {
+public class ScheduleMethod implements Serializable {
 	 
-	Scanner input; // 스캐너 선언
+	private static final long serialVersionUID = 3366650634571121987L;
+	
+	transient Scanner input; // 스캐너 선언
 	ScheduleMethod(Scanner input) {
 		this.input = input;
 	}
@@ -48,10 +52,11 @@ public class ScheduleMethod {
 					schedule_list.add(scheduleInput); // 추가된 메서드를 리스트에 추가
 					break;
 				} else {
-					System.out.print("Type your schedule category (1~4) : ");
 				}
 			} catch(InputMismatchException e) {
+				// 만약 kind에 문자가 들어가면 예외처리를 시행함
 				System.out.println("Please put an correct integer");
+				// 올바른 int형 숫자 입력 요청
 				if (input.hasNext()) {
 					input.next();
 				}
@@ -69,6 +74,7 @@ public class ScheduleMethod {
 		int index = findIndex(serial);
 		removefromSchedules(index, serial);
 		System.out.println("------------------------------------------------------");
+		
 	}
 	
 	public int findIndex(int serial) {
@@ -137,18 +143,17 @@ public class ScheduleMethod {
 		} else if (schedule_list.size() == 1) { // 리스트에 하나라도 정보가 있으면
 			for (int i=0; i<schedule_list.size();i++) { // 스케줄 리스트의 크기만큼 반복
 				schedule_list.get(i).printInfo(); // 리스트 내의 정보를 각자 자식 클래스의 출력 메서드에서 출력
-				System.out.println();
+				System.out.println(""); // 줄 띄우기
 			}
 			System.out.printf("there is %d schedule in database.\n", schedule_list.size());
 		} else { // 리스트에 하나라도 정보가 있으면
 			for (int i=0; i<schedule_list.size();i++) { // 스케줄 리스트의 크기만큼 반복
 				schedule_list.get(i).printInfo(); // 리스트 내의 정보를 각자 자식 클래스의 출력 메서드에서 출력
-				System.out.println();
+				System.out.println("");
 			}
 			System.out.printf("there are %d schedules in database.\n", schedule_list.size());
+			// 몇 개 있는지 출력
 		}
-		
-		// 몇 개 있는지 출력
 		System.out.println("------------------------------------------------------");
 	}
 }
