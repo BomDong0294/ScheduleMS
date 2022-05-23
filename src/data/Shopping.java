@@ -1,16 +1,17 @@
-package Schedule;
+package data;
 
 import java.util.Scanner;
 
-public class ShoppingSch extends Schedule { // 일반 스케줄 클래스를 상속받음
+public class Shopping extends Schedule { // 일반 스케줄 클래스를 상속받음
 	
+	private static final long serialVersionUID = 1158286935571549727L;
 	protected int money; // 돈 변수 선언
 
-	public ShoppingSch(ScheduleKind kind) {
+	public Shopping(Kind kind) {
 		super(kind);
 	} // 쇼핑 스케줄 kind 변수만 있는 생성자 선언 
 	
-	public ShoppingSch(ScheduleKind kind, int snum, int year, int mon, int day, int hour, int min, int peoplecount, int money) {
+	public Shopping(Kind kind, int snum, int year, int mon, int day, int hour, int min, int peoplecount, int money) {
 		super(kind);
 		this.snum = snum;
 		this.year = year;
@@ -44,13 +45,13 @@ public class ShoppingSch extends Schedule { // 일반 스케줄 클래스를 상
 		}
 	}
 	
-	public void setMoney(ScheduleInput schedule, Scanner input) {
+	public void setMoney(InputInterface schedule, Scanner input) {
 		System.out.print("How much money do you have? : ");
 		int money = input.nextInt();
 		this.setMoney(money); // 돈 변수 초기화
 	}
 
-	public void setPeoplecount(ScheduleInput schedule, Scanner input) {
+	public void setPeoplecount(InputInterface schedule, Scanner input) {
 		System.out.print("How many people go shopping with you? : ");
 		int peoplecount = input.nextInt();
 		this.setPeoplecount(peoplecount+1); // 추가된 인원에 자신을 추가한 값을 저장함

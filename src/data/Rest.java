@@ -1,16 +1,17 @@
-package Schedule;
+package data;
 
 import java.util.Scanner;
 
-public class RestSch extends Schedule { // 일반 스케줄 클래스를 상속받음
+public class Rest extends Schedule { // 일반 스케줄 클래스를 상속받음
 	
+	private static final long serialVersionUID = 6184538990603416133L;
 	protected int schday; // 예정 휴식기간 변수 추가
 
-	public RestSch(ScheduleKind kind) {
+	public Rest(Kind kind) {
 		super(kind);
 	} // 미팅 스케줄 kind 변수만 있는 생성자 선언 
 	
-	public RestSch(ScheduleKind kind, int snum, int year, int mon, int day, int peoplecount, int money, int schhour, int schday) {
+	public Rest(Kind kind, int snum, int year, int mon, int day, int peoplecount, int money, int schhour, int schday) {
 		super(kind);
 		this.snum = snum;
 		this.year = year;
@@ -49,13 +50,13 @@ public class RestSch extends Schedule { // 일반 스케줄 클래스를 상속�
 		this.schday = schday;
 	}
 	
-	public void setSchday(ScheduleInput schedule, Scanner input) {
+	public void setSchday(InputInterface schedule, Scanner input) {
 		System.out.print("How much you sleep at there? : ");
 		int setday = input.nextInt();
 		this.setSchday(setday); // 숙박하는 기간 저장 (일 단위)
 	}
 	
-	public void setPeoplecount(ScheduleInput schedule, Scanner input) {
+	public void setPeoplecount(InputInterface schedule, Scanner input) {
 		System.out.print("How many people participate in travel? : ");
 		int peoplecount = input.nextInt();
 		this.setPeoplecount(peoplecount); // 참석 인원 변수 입력 및 저장

@@ -1,25 +1,22 @@
-import Schedule.MeetingSch; // 미팅 일정 클래스 임포트
-import Schedule.RestSch; // 휴식 일정 클래스 임포트
-import Schedule.ScheduleInput; // 인터페이스 임포트
-import Schedule.ScheduleKind; // 스케줄 종류 enum 임포트
-import Schedule.ShoppingSch; // 쇼핑 일정 클래스 임포트
-import Schedule.StudySch; // 공부 일정 클래스 임포트
-
+package function;
 import java.io.Serializable;
 import java.util.*; // ArrayList 사용할 유틸리티 임포트
 
-public class ScheduleMethod implements Serializable {
-	 
-	private static final long serialVersionUID = 3366650634571121987L;
+import data.Meeting;
+import data.Rest;
+import data.InputInterface;
+import data.Kind;
+import data.Shopping;
+import data.Study;
+
+public class ScheduleMethod implements Serializable{
 	
-	transient Scanner input; // 스캐너 선언
-	ScheduleMethod(Scanner input) {
-		this.input = input;
-	}
-	ArrayList<ScheduleInput> schedule_list = new ArrayList<ScheduleInput>(); // 스케줄 리스트 선언
+	private static final long serialVersionUID = 5558847185368508745L;
+	transient Scanner input = new Scanner(System.in); // 스캐너 선언
+	ArrayList<InputInterface> schedule_list = new ArrayList<InputInterface>(); // 스케줄 리스트 선언
 	
 	public void addSchedule() { // 스케줄 추가 메서드
-		ScheduleInput scheduleInput; // 스케줄 객체 선언
+		InputInterface scheduleInput; // 스케줄 객체 선언
 		int kind = 0;
 		while (kind < 1 || kind > 4) {
 			try {
@@ -32,22 +29,22 @@ public class ScheduleMethod implements Serializable {
 				kind = input.nextInt(); // 스케줄 카테고리 입력 (단, 1~4가 아니면 반복)
 				System.out.println("------------------------------------------------------");
 				if (kind == 1) {
-					scheduleInput = new MeetingSch(ScheduleKind.Meeting); 
+					scheduleInput = new Meeting(Kind.Meeting); 
 					scheduleInput.getScheduleInput(input);
 					schedule_list.add(scheduleInput); // 추가된 메서드를 리스트에 추가
 					break;
 				} else if (kind == 2) {
-					scheduleInput = new ShoppingSch(ScheduleKind.Shopping);
+					scheduleInput = new Shopping(Kind.Shopping);
 					scheduleInput.getScheduleInput(input);
 					schedule_list.add(scheduleInput); // 추가된 메서드를 리스트에 추가
 					break;
 				} else if (kind == 3) {
-					scheduleInput = new StudySch(ScheduleKind.Studying);
+					scheduleInput = new Study(Kind.Studying);
 					scheduleInput.getScheduleInput(input);
 					schedule_list.add(scheduleInput); // 추가된 메서드를 리스트에 추가
 					break;
 				} else if (kind == 4) {
-					scheduleInput = new RestSch(ScheduleKind.Resting);
+					scheduleInput = new Rest(Kind.Resting);
 					scheduleInput.getScheduleInput(input);
 					schedule_list.add(scheduleInput); // 추가된 메서드를 리스트에 추가
 					break;
@@ -104,7 +101,7 @@ public class ScheduleMethod implements Serializable {
 		int serial = input.nextInt(); // 고유 번호 입력
 		int index = -1;
 		for (int i=0; i<schedule_list.size();i++) { // 스케줄 리스트의 크기만큼 반복
-			ScheduleInput scheduleInput = schedule_list.get(i);
+			InputInterface scheduleInput = schedule_list.get(i);
 			if (scheduleInput.getSerial() == serial) { // 스케줄 리스트의 고유번호가 입력한 고유번호와 일치하면
 				index = i;
 				schedule_list.get(i).getScheduleInput(input);

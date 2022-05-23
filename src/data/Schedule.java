@@ -1,12 +1,12 @@
-package Schedule;
+package data;
 import java.io.Serializable;
 import java.util.Scanner;
 
 import Exceptions.Exceptions;
 
-public abstract class Schedule implements ScheduleInput, Serializable {
+public abstract class Schedule implements InputInterface, Serializable {
 	private static final long serialVersionUID = 8101442141971410181L;
-	protected ScheduleKind kind = ScheduleKind.Meeting;
+	protected Kind kind = Kind.Meeting;
 	protected int year; // 연도 변수 선언
 	protected int mon; // 월 변수 선언
 	protected int day; // 일 변수 선언
@@ -19,13 +19,13 @@ public abstract class Schedule implements ScheduleInput, Serializable {
 	// printInfo() 메서드는 추상화로 선언하여 나머지 자식 클래스에서 사용함
 	
 	// 여기서부터 마지막 줄까지 있는 변수들을 getter, setter메서드로 구현한 것
-	public Schedule(ScheduleKind kind) {
+	public Schedule(Kind kind) {
 		this.kind = kind;
 	}
-	public ScheduleKind getKind() {
+	public Kind getKind() {
 		return kind;
 	}
-	public void setKind(ScheduleKind kind) {
+	public void setKind(Kind kind) {
 		this.kind = kind;
 	}
 	public int getSerial() {

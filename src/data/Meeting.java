@@ -1,16 +1,17 @@
-package Schedule;
+package data;
 
 import java.util.Scanner;
 
-public class MeetingSch extends Schedule { // 일반 스케줄 클래스를 상속받음
+public class Meeting extends Schedule { // 일반 스케줄 클래스를 상속받음
 	
+	private static final long serialVersionUID = -2277402365341307172L;
 	protected int schhour; // 일정 시간 변수 선언
 
-	public MeetingSch(ScheduleKind kind) {
+	public Meeting(Kind kind) {
 		super(kind);
 	} // 미팅 스케줄 kind 변수만 있는 생성자 선언 
 	
-	public MeetingSch(ScheduleKind kind, int snum, int year, int mon, int day, int hour, int min, int peoplecount, int schhour) {
+	public Meeting(Kind kind, int snum, int year, int mon, int day, int hour, int min, int peoplecount, int schhour) {
 		super(kind);
 		this.snum = snum;
 		this.year = year;
@@ -40,13 +41,13 @@ public class MeetingSch extends Schedule { // 일반 스케줄 클래스를 상�
 		System.out.printf("%dhour meeting will be held.\n", schhour); // 회의 시간 출력
 	}
 	
-	public void setSchhour(ScheduleInput schedule, Scanner input) {
+	public void setSchhour(InputInterface schedule, Scanner input) {
 		System.out.print("How much time you planned? (At hour) : ");
 		int schhour = input.nextInt();
 		this.setSchhour(schhour); // 예정된 시간 입력 후 저장
 	}
 	
-	public void setPeoplecount(ScheduleInput schedule, Scanner input) {
+	public void setPeoplecount(InputInterface schedule, Scanner input) {
 		System.out.print("How many people participate this meeting? : ");
 		int peoplecount = input.nextInt();
 		this.setPeoplecount(peoplecount); // 선택 참석이므로 인원을 직접 입력 후 저장

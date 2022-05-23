@@ -1,25 +1,22 @@
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+package data;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import function.ScheduleMethod;
 import log.EventLogger;
-public class ScheduleMS {
+public class Menu {
+
 	static EventLogger logger = new EventLogger("log.txt");
 	
 	public static void main(String[] args) {
 		
 		Scanner input = new Scanner(System.in);
-		ScheduleMethod schfunction = getObject("ScheduleMethod.ser");
+		ScheduleMethod schfunction = EventLogger.getObject("ScheduleMethod.ser");
 		if (schfunction == null) {
-			schfunction = new ScheduleMethod(input); // SchManager 클래스 호출
+			schfunction = new ScheduleMethod(); // SchManager 클래스 호출
 		}
 		selectMenu(input, schfunction);
-		putObject(schfunction, "ScheduleMethod.ser");
+		EventLogger.putObject(schfunction, "ScheduleMethod.ser");
 		System.out.println("The Program is ended."); //프로그램 종료 알림
 	}
 	
@@ -32,7 +29,7 @@ public class ScheduleMS {
 				System.out.println("------------------------------------------------------");
 				switch (num) {
 				case 1:
-					schfunction.addSchedule(); // 스케줄 추가 함수 호출
+					schfunction.addSchedule();
 					logger.log("Add a schedule");
 					break;
 				case 2:
@@ -81,40 +78,5 @@ public class ScheduleMS {
 		System.out.print("Select one number between 1 to 6 : "); //입력하라고 표시
 	}
 	
-	public static ScheduleMethod getObject(String filename) {
-		ScheduleMethod schfunction = null;
-		FileInputStream file;
-		try {
-			file = new FileInputStream(filename);
-			ObjectInputStream in = new ObjectInputStream(file);
-			schfunction = (ScheduleMethod)in.readObject();
-			in.close();
-			file.close();
-		} catch (FileNotFoundException e) {
-			return schfunction;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return schfunction;
-	}
 	
-	public static void putObject(ScheduleMethod schfunction, String filename) {
-		try {
-			FileOutputStream file = new FileOutputStream(filename);
-			ObjectOutputStream out = new ObjectOutputStream(file);
-			out.writeObject(schfunction);
-			out.close();
-			file.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 }

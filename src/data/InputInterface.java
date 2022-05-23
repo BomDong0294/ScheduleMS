@@ -1,10 +1,10 @@
-package Schedule;
+package data;
 
 import java.util.Scanner;
 
 import Exceptions.Exceptions;
 
-public interface ScheduleInput {
+public interface InputInterface {
 	
 	public int getSerial(); // 인터페이스 내에서 getSerial() 메서드 선언
 	

@@ -1,16 +1,17 @@
-package Schedule;
+package data;
 
 import java.util.Scanner;
 
-public class StudySch extends Schedule { // 일반 스케줄 클래스를 상속받음
+public class Study extends Schedule { // 일반 스케줄 클래스를 상속받음
 	
+	private static final long serialVersionUID = 1915738492071953253L;
 	protected int schhour; // 일정 시간 변수 선언
 
-	public StudySch(ScheduleKind kind) {
+	public Study(Kind kind) {
 		super(kind);
 	} // 공부 스케줄 kind 변수만 있는 생성자 선언 
 	
-	public StudySch(ScheduleKind kind, int snum, int year, int mon, int day, int hour, int min, int peoplecount, int money, int schhour, int schday) {
+	public Study(Kind kind, int snum, int year, int mon, int day, int hour, int min, int peoplecount, int money, int schhour, int schday) {
 		super(kind);
 		this.snum = snum;
 		this.year = year;
@@ -44,13 +45,13 @@ public class StudySch extends Schedule { // 일반 스케줄 클래스를 상속
 		System.out.printf("%dhour studying will be held.\n", schhour);
 	}
 
-	public void setSchhour(ScheduleInput schedule, Scanner input) {
+	public void setSchhour(InputInterface schedule, Scanner input) {
 		System.out.print("How much time you scheduled? : ");
 		int schhour = input.nextInt();
 		this.setSchhour(schhour); // 예정 일정 시간 입력 및 저장
 	}
 	
-	public void setPeoplecount(ScheduleInput schedule, Scanner input) {
+	public void setPeoplecount(InputInterface schedule, Scanner input) {
 		System.out.print("How many people participate in the project? : ");
 		int peoplecount = input.nextInt();
 		this.setPeoplecount(peoplecount+1); // 참가하는 인원에 자신의 인원을 더한 값을 저장
