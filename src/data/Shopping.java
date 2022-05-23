@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Shopping extends Schedule { // 일반 스케줄 클래스를 상속받음
 	
 	private static final long serialVersionUID = 1158286935571549727L;
+	// 직렬화를 하였음.
 	protected int money; // 돈 변수 선언
 
 	public Shopping(Kind kind) {

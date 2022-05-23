@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Rest extends Schedule { // 일반 스케줄 클래스를 상속받음
 	
 	private static final long serialVersionUID = 6184538990603416133L;
+	// 직렬화를 하였음.
 	protected int schday; // 예정 휴식기간 변수 추가
 
 	public Rest(Kind kind) {

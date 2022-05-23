@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Meeting extends Schedule { // 일반 스케줄 클래스를 상속받음
 	
 	private static final long serialVersionUID = -2277402365341307172L;
+	// 직렬화를 하였음.
 	protected int schhour; // 일정 시간 변수 선언
 
 	public Meeting(Kind kind) {

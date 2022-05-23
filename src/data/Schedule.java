@@ -5,7 +5,9 @@ import java.util.Scanner;
 import Exceptions.Exceptions;
 
 public abstract class Schedule implements InputInterface, Serializable {
+	// 직렬화 인터페이스를 상속받음
 	private static final long serialVersionUID = 8101442141971410181L;
+	// 직렬화를 하였음.
 	protected Kind kind = Kind.Meeting;
 	protected int year; // 연도 변수 선언
 	protected int mon; // 월 변수 선언

@@ -6,6 +6,7 @@ import log.EventLogger;
 public class Menu {
 
 	static EventLogger logger = new EventLogger("log.txt");
+	// 텍스트 파일 하나를 logger를 통해 생성함
 	
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
