@@ -12,10 +12,9 @@ import data.Study;
 public class ScheduleMethod implements Serializable{
 	
 	private static final long serialVersionUID = 5558847185368508745L;
-	transient Scanner input = new Scanner(System.in); // 스캐너 선언
 	ArrayList<InputInterface> schedule_list = new ArrayList<InputInterface>(); // 스케줄 리스트 선언
 	
-	public void addSchedule() { // 스케줄 추가 메서드
+	public void addSchedule(Scanner input) { // 스케줄 추가 메서드
 		InputInterface scheduleInput; // 스케줄 객체 선언
 		int kind = 0;
 		while (kind < 1 || kind > 4) {
@@ -65,7 +64,7 @@ public class ScheduleMethod implements Serializable{
 		System.out.println("------------------------------------------------------");
 	}
 	
-	public void deleteSchedule() { // 스케줄 삭제
+	public void deleteSchedule(Scanner input) { // 스케줄 삭제
 		System.out.print("Type your schedule serial number : ");
 		int serial = input.nextInt(); // 고유 번호 입력
 		int index = findIndex(serial);
@@ -96,7 +95,7 @@ public class ScheduleMethod implements Serializable{
 		}
 	}
 	
-	public void editSchedule() { // 스케줄 편집
+	public void editSchedule(Scanner input) { // 스케줄 편집
 		System.out.print("Type Your Serial number : ");
 		int serial = input.nextInt(); // 고유 번호 입력
 		int index = -1;
@@ -115,7 +114,7 @@ public class ScheduleMethod implements Serializable{
 		System.out.println("------------------------------------------------------");
 	}
 	
-	public void viewOneSchedule() { // 특정 스케줄 출력 메서드
+	public void viewOneSchedule(Scanner input) { // 특정 스케줄 출력 메서드
 		System.out.print("Type Your Serial number : ");
 		int serial = input.nextInt(); // 고유번호 입력
 		boolean flag = false;// 데이터 유무 판별을 위한 boolean형의 변수 선언

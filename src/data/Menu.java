@@ -1,7 +1,6 @@
 package data;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import function.ScheduleMethod;
 import log.EventLogger;
 public class Menu {
@@ -9,7 +8,6 @@ public class Menu {
 	static EventLogger logger = new EventLogger("log.txt");
 	
 	public static void main(String[] args) {
-		
 		Scanner input = new Scanner(System.in);
 		ScheduleMethod schfunction = EventLogger.getObject("ScheduleMethod.ser");
 		if (schfunction == null) {
@@ -29,19 +27,19 @@ public class Menu {
 				System.out.println("------------------------------------------------------");
 				switch (num) {
 				case 1:
-					schfunction.addSchedule();
+					schfunction.addSchedule(input);
 					logger.log("Add a schedule");
 					break;
 				case 2:
-					schfunction.deleteSchedule(); // 스케줄 삭제 함수호출
+					schfunction.deleteSchedule(input); // 스케줄 삭제 함수호출
 					logger.log("Delete a schedule");
 					break;
 				case 3:
-					schfunction.editSchedule(); // 스케줄 편집함수 호출
+					schfunction.editSchedule(input); // 스케줄 편집함수 호출
 					logger.log("Edit a schedule");
 					break;
 				case 4:
-					schfunction.viewOneSchedule(); // 스케줄 보기 함수 호출
+					schfunction.viewOneSchedule(input); // 스케줄 보기 함수 호출
 					logger.log("View a schedule");
 					break;
 				case 5:
