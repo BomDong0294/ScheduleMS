@@ -27,3 +27,4 @@ public class Viewer extends JFrame { // 표시하는 클래스는 JFrame클래�
 		
 	}
 }
+//

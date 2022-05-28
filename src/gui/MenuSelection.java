@@ -39,4 +39,4 @@ public class MenuSelection extends JFrame { // JFrame 클래스 상속
 		this.setVisible(true); // 화면에 표시되도록 설정
 	}
 
-}
+}//
