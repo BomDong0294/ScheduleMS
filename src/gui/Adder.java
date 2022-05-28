@@ -64,4 +64,4 @@ public class Adder extends JFrame {
 		this.setContentPane(panel);
 		this.setVisible(true);
 	}
-}//
+}
