@@ -80,5 +80,45 @@ public class Rest extends Schedule { // 일반 스케줄 클래스를 상속받�
 			}
 		}
 	}
+	public int getSerial() {
+		return snum;
+	}
+	
+	public int getYear() {
+		return year;
+	}
+	
+	public int getMonth() {
+		return mon;
+	}
+	
+	public int getDay() {
+		return day; 
+	}
+	
+	public int getHour() {
+		return hour;
+	}
+	
+	public int getMinute() {
+		return min;
+	
+	}
+
+	public int getPeoplecount() {
+		return peoplecount;
+	}
+
+	public int getSchhour() {
+		return 0;
+	}
+	
+	public int getMoney() {
+		return 0;
+	}
+	@Override
+	public Kind getKind() {
+		return kind;
+	}
 	
 }

@@ -84,4 +84,44 @@ public class Shopping extends Schedule { // 일반 스케줄 클래스를 상속
 	public void setMoney(int money) {
 		this.money = money;
 	}
+	
+	public int getSerial() {
+		return snum;
+	}
+	
+	public int getYear() {
+		return year;
+	}
+	
+	public int getMonth() {
+		return mon;
+	}
+	
+	public int getDay() {
+		return day; 
+	}
+	
+	public int getHour() {
+		return hour;
+	}
+	
+	public int getMinute() {
+		return min;
+	}
+	
+	public int getPeoplecount() {
+		return peoplecount;
+	}
+
+	public int getSchhour() {
+		return 0;
+	}
+
+	public int getSchday() {
+		return 0;
+	}
+	@Override
+	public Kind getKind() {
+		return kind;
+	}
 }

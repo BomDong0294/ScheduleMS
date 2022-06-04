@@ -9,18 +9,18 @@ import ButtonActionListener.MenuListener;
 import data.InputInterface;
 import function.ScheduleMethod;
 
-public class AllViewer extends JPanel { // 표시하는 클래스는 JFrame클래스를 상속받음
+public class OneViewer extends JPanel { // 표시하는 클래스는 JFrame클래스를 상속받음
 	
 	WindowFrame frame;
 	ScheduleMethod schfunction;
 	
-	public AllViewer(WindowFrame frame, ScheduleMethod schfunction) {
+	public OneViewer(WindowFrame frame, ScheduleMethod schfunction) {
 		this.frame = frame;
 		this.schfunction = schfunction;
 		this.setLayout(new BorderLayout());
 		JPanel panel1 = new JPanel();
 		
-		System.out.println("*** Stored count of Information : " + schfunction.size() + " ***");
+		if (schfunction.size() == 0) return;
 		
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("Category");
@@ -33,33 +33,39 @@ public class AllViewer extends JPanel { // 표시하는 클래스는 JFrame클�
 		model.addColumn("Number of Attendees");
 		model.addColumn("Additional Informations");
 		
-		for (int i=0; i < schfunction.size(); i++) {
-			Vector row = new Vector();
+		int i=0; // serial
+		for (int j=0; j<schfunction.size(); j++) {
 			InputInterface in = schfunction.get(i);
-			row.add(in.getKind());
-			row.add(in.getSerial());
-			row.add(in.getYear());
-			row.add(in.getMonth());
-			row.add(in.getDay());
-			row.add(in.getHour());
-			row.add(in.getMinute());
-			row.add(in.getPeoplecount());
-			switch (in.getKind()) {
-			case Meeting :
-				row.add("Meeting Hour : " + in.getSchhour());
-				break;
-			case Shopping :
-				row.add("Shopping Moeny(KRW) : " + in.getMoney());
-				break;
-			case Studying :
-				row.add("Studying Hour : " + in.getSchhour());
-				break;
-			case Resting :
-				row.add("Vacation Day Off : " + in.getSchday());
-				break;
+			if (i == schfunction.get(j).getSerial()) {
+				i = j;
 			}
-			model.addRow(row);
 		}
+
+		Vector row = new Vector();
+		InputInterface in = schfunction.get(i);
+		row.add(in.getKind());
+		row.add(in.getSerial());
+		row.add(in.getYear());
+		row.add(in.getMonth());
+		row.add(in.getDay());
+		row.add(in.getHour());
+		row.add(in.getMinute());
+		row.add(in.getPeoplecount());
+		switch (in.getKind()) {
+		case Meeting :
+			row.add("Meeting Hour : " + in.getSchhour());
+			break;
+		case Shopping :
+			row.add("Shopping Moeny(KRW) : " + in.getMoney());
+			break;
+		case Studying :
+			row.add("Studying Hour : " + in.getSchhour());
+			break;
+		case Resting :
+			row.add("Vacation Day Off : " + in.getSchday());
+			break;
+		}
+		model.addRow(row);
 		
 		JButton button1 = new JButton("Exit"); // execute버튼 추가
 		button1.addActionListener(new MenuListener(frame));

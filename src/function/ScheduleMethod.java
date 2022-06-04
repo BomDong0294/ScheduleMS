@@ -1,13 +1,7 @@
 package function;
 import java.io.Serializable;
-import java.util.*; // ArrayList 사용할 유틸리티 임포트
-
-import data.Meeting;
-import data.Rest;
-import data.InputInterface;
-import data.Kind;
-import data.Shopping;
-import data.Study;
+import java.util.*;
+import data.*;
 
 public class ScheduleMethod implements Serializable{
 	// 직렬화 인터페이스를 상속받음.
@@ -152,5 +146,13 @@ public class ScheduleMethod implements Serializable{
 			// 몇 개 있는지 출력
 		}
 		System.out.println("------------------------------------------------------");
+	}
+	
+	public InputInterface get(int index) {
+		return (Schedule) schedule_list.get(index);
+	}
+	
+	public int size() {
+		return schedule_list.size();
 	}
 }

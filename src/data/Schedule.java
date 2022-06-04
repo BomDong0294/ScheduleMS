@@ -24,69 +24,53 @@ public abstract class Schedule implements InputInterface, Serializable {
 	public Schedule(Kind kind) {
 		this.kind = kind;
 	}
-	public Kind getKind() {
-		return kind;
-	}
+	
 	public void setKind(Kind kind) {
 		this.kind = kind;
 	}
-	public int getSerial() {
-		return snum;
-	}
+
 	public void setSerial(int snum) throws Exceptions {
 		if (snum < 1) {
 			throw new Exceptions();
 		}
 		this.snum = snum;
 	}
-	public int getYear() {
-		return year;
-	}
+
 	public void setYear(int year) throws Exceptions {
 		if (year < 2022) {
 			throw new Exceptions();
 		}
 		this.year = year; 
 	}
-	public int getMonth() {
-		return mon;
-	}
+
 	public void setMonth(int mon) throws Exceptions {
 		if (mon < 1 || mon > 12) {
 			throw new Exceptions();
 		}
 		this.mon = mon; 
 	}
-	public int getDay() {
-		return day; 
-	}
+
 	public void setDay(int day) throws Exceptions {
 		if (day < 1 || day > 31) {
 			throw new Exceptions();
 		}
 		this.day = day;
 	}
-	public int getHour() {
-		return hour;
-	}
+
 	public void setHour(int hour) throws Exceptions {
 		if (hour < 0 || hour > 23) {
 			throw new Exceptions();
 		}
 		this.hour = hour;
 	}
-	public int getMinute() {
-		return min;
-	}
+
 	public void setMinute(int min) throws Exceptions {
 		if (min < 0 || min > 59) {
 			throw new Exceptions();
 		}
 		this.min = min;
 	}
-	public int getPeoplecount() {
-		return peoplecount;
-	}
+	
 	public void setPeoplecount(int peoplecount) {
 		this.peoplecount = peoplecount;
 	}

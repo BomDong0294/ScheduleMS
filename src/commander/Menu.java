@@ -1,7 +1,8 @@
-package data;
+package commander;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import function.ScheduleMethod;
+import gui.WindowFrame;
 import log.EventLogger;
 public class Menu {
 
@@ -14,6 +15,7 @@ public class Menu {
 		if (schfunction == null) {
 			schfunction = new ScheduleMethod(); // SchManager 클래스 호출
 		}
+		WindowFrame frame = new WindowFrame(schfunction);
 		selectMenu(input, schfunction);
 		EventLogger.putObject(schfunction, "ScheduleMethod.ser");
 		System.out.println("The Program is ended."); //프로그램 종료 알림

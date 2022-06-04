@@ -1,17 +1,19 @@
 package gui;
 
-import java.awt.BorderLayout;
+import java.awt.*;
+import javax.swing.*;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import ButtonActionListener.*;
+import function.ScheduleMethod;
 
-public class MenuSelection extends JFrame { // JFrame 클래스 상속
+public class MenuSelection extends JPanel { // JFrame 클래스 상속
 	
-	public MenuSelection() {
-		this.setSize(600, 400); // 창의 크기를 지정
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 창을 닫으면 프로그램 종료
+	WindowFrame frame;
+	ScheduleMethod schfunction;
+	
+	public MenuSelection(WindowFrame frame, ScheduleMethod schfunction) {
+		this.frame = frame;
+		this.setLayout(new BorderLayout());
 		
 		JPanel panel1 = new JPanel(); // 패널 하나 추가
 		JPanel panel2 = new JPanel(); // 패널 하나 더 추가
@@ -24,6 +26,12 @@ public class MenuSelection extends JFrame { // JFrame 클래스 상속
 		JButton button5 = new JButton("View all Schedule"); // 모든 스케줄 표시 버튼 추가
 		JButton button6 = new JButton("Exit program"); // 프로그램 종료 버튼 추가
 		
+		button1.addActionListener(new AddmenuListener(frame));
+		button2.addActionListener(new DelSerialListener(frame));
+		button3.addActionListener(new EditSerialListener(frame));
+		button4.addActionListener(new ViewSerialListener(frame));
+		button5.addActionListener(new AllViewListener(frame));
+		button6.addActionListener(new ExitListener(frame));
 		
 		panel1.add(label); // 메뉴 선택 제목이 포함된 패널1을 추가함
 		panel2.add(button1); 
@@ -35,8 +43,6 @@ public class MenuSelection extends JFrame { // JFrame 클래스 상속
 		
 		this.add(panel1, BorderLayout.NORTH); // 패널1을 레이아웃 내에서 북쪽에 생성
 		this.add(panel2, BorderLayout.CENTER); // 패널2를 레이아웃 내에서 중앙에 생성
-		
-		this.setVisible(true); // 화면에 표시되도록 설정
 	}
 
 }
