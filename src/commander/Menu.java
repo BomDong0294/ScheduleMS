@@ -11,10 +11,13 @@ public class Menu {
 	
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
+		
+		ScheduleMethod schedule_method = ScheduleMethod.getInstance();  // 단일 ScheduleMethod 인스턴스 생
 		ScheduleMethod schfunction = EventLogger.getObject("ScheduleMethod.ser");
-		if (schfunction == null) {
-			schfunction = new ScheduleMethod(); // SchManager 클래스 호출
+		if (schfunction != null) {
+			schedule_method.copyFrom(schfunction); // SchManager 클래스 호출
 		}
+		
 		WindowFrame frame = new WindowFrame(schfunction);
 		selectMenu(input, schfunction);
 		EventLogger.putObject(schfunction, "ScheduleMethod.ser");

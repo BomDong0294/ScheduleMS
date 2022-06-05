@@ -9,6 +9,10 @@ public class ScheduleMethod implements Serializable{
 	// 직렬화를 시킴.
 	public ArrayList<InputInterface> schedule_list = new ArrayList<InputInterface>(); // 스케줄 리스트 선언
 	
+	public void copyFrom(ScheduleMethod other) {
+		schedule_list = other.schedule_list;
+	}
+	
 	public void addSchedule(Scanner input) { // 스케줄 추가 메서드
 		InputInterface scheduleInput; // 스케줄 객체 선언
 		int kind = 0;
@@ -155,4 +159,13 @@ public class ScheduleMethod implements Serializable{
 	public int size() {
 		return schedule_list.size();
 	}
+	
+	public static ScheduleMethod getInstance() {
+		if (_s_instance == null) {
+			_s_instance = new ScheduleMethod();
+		}
+		return _s_instance;
+	}
+	
+	private static ScheduleMethod _s_instance = null;
 }

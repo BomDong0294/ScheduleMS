@@ -6,7 +6,7 @@ import function.ScheduleMethod;
 
 public class MeetingAdder extends JPanel {
 	
-	WindowFrame frame;
+	public WindowFrame frame;
 	ScheduleMethod schfunction;
 	public JTextField fieldSerial;
 	public JTextField fieldYear;
@@ -16,26 +16,6 @@ public class MeetingAdder extends JPanel {
 	public JTextField fieldMinute;
 	public JTextField fieldPeoplecount;
 	public JTextField fieldSchhour;
-
-//	public String ssnum;
-//	public String syear;
-//	public String smon;
-//	public String sday;
-//	public String shour;
-//	public String smin;
-//	public String speoplecount;
-//	public String sschhour;
-//	
-//	public void InfoSetter(String ssnum, String syear, String smon, String sday, String shour, String smin, String speoplecount, String sschhour) {
-//		this.ssnum = fieldSerial.getText();
-//		this.syear = fieldYear.getText();
-//		this.smon = fieldMonth.getText();
-//		this.sday = fieldDay.getText();
-//		this.shour = fieldHour.getText();
-//		this.smin = fieldMinute.getText();
-//		this.speoplecount = fieldPeoplecount.getText();
-//		this.sschhour = fieldSchhour.getText();
-//	}
 
 	public MeetingAdder(WindowFrame frame, ScheduleMethod schfunction) {
 		this.frame = frame;
@@ -88,17 +68,14 @@ public class MeetingAdder extends JPanel {
 		panel.add(labelPeoplecount);
 		panel.add(fieldPeoplecount);
 
-		
 		JLabel labelSchhour = new JLabel("Meeting Hour : ", JLabel.TRAILING);
 		fieldSchhour = new JTextField(10);
 		labelSchhour.setLabelFor(fieldSchhour);
 		panel.add(labelSchhour);
 		panel.add(fieldSchhour);
 		
-//		InfoSetter(ssnum,syear,smon,sday,shour,smin,speoplecount,sschhour);
-		
 		JButton button1 = new JButton("Save");
-		button1.addActionListener(new MeetingSave(frame, schfunction));
+		button1.addActionListener(new MeetingSave(this));
 		panel.add(button1); // save버튼 추가
 		
 		JButton button2 = new JButton("Cancel"); // cancel버튼 추가
@@ -111,69 +88,5 @@ public class MeetingAdder extends JPanel {
 		this.add(panel);
 		this.setVisible(true);
 	}
-	
-//	public String getSsnum() {
-//		return ssnum;
-//	}
-//
-//	public void setSsnum(String ssnum) {
-//		this.ssnum = ssnum;
-//	}
-//
-//	public String getSyear() {
-//		return syear;
-//	}
-//
-//	public void setSyear(String syear) {
-//		this.syear = syear;
-//	}
-//
-//	public String getSmon() {
-//		return smon;
-//	}
-//
-//	public void setSmon(String smon) {
-//		this.smon = smon;
-//	}
-//
-//	public String getSday() {
-//		return sday;
-//	}
-//
-//	public void setSday(String sday) {
-//		this.sday = sday;
-//	}
-//
-//	public String getShour() {
-//		return shour;
-//	}
-//
-//	public void setShour(String shour) {
-//		this.shour = shour;
-//	}
-//
-//	public String getSmin() {
-//		return smin;
-//	}
-//
-//	public void setSmin(String smin) {
-//		this.smin = smin;
-//	}
-//
-//	public String getSpeoplecount() {
-//		return speoplecount;
-//	}
-//
-//	public void setSpeoplecount(String speoplecount) {
-//		this.speoplecount = speoplecount;
-//	}
-//
-//	public String getSschhour() {
-//		return sschhour;
-//	}
-//
-//	public void setSschhour(String sschhour) {
-//		this.sschhour = sschhour;
-//	}
 
 }

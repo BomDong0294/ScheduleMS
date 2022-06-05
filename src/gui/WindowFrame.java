@@ -31,13 +31,13 @@ public class WindowFrame extends JFrame {
 		menuselection = new MenuSelection(this, this.schfunction);
 		addermenu = new AdderMenu(this, this.schfunction);
 		meetingadder = new MeetingAdder(this, this.schfunction);
-		meetingsaver = new MeetingSaver(this, this.schfunction);
 		shoppingadder = new ShoppingAdder(this, this.schfunction);
 		studyingadder = new StudyingAdder(this, this.schfunction);
 		restingadder = new RestingAdder(this, this.schfunction);
 		delserialchecker = new DelSerialChecker(this, this.schfunction);
 		editserialchecker = new EditSerialChecker(this, this.schfunction);
 		editor = new Editor(this,this.schfunction);
+		meetingsaver = new MeetingSaver(meetingadder);
 		viewserialchecker = new ViewSerialChecker(this, this.schfunction);
 		oneviewer = new OneViewer(this, this.schfunction);
 		allviewer = new AllViewer(this, this.schfunction);
