@@ -7,7 +7,7 @@ public class ScheduleMethod implements Serializable{
 	// 직렬화 인터페이스를 상속받음.
 	private static final long serialVersionUID = 5558847185368508745L;
 	// 직렬화를 시킴.
-	ArrayList<InputInterface> schedule_list = new ArrayList<InputInterface>(); // 스케줄 리스트 선언
+	public ArrayList<InputInterface> schedule_list = new ArrayList<InputInterface>(); // 스케줄 리스트 선언
 	
 	public void addSchedule(Scanner input) { // 스케줄 추가 메서드
 		InputInterface scheduleInput; // 스케줄 객체 선언
