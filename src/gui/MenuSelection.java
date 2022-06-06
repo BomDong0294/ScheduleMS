@@ -4,14 +4,14 @@ import java.awt.*;
 import javax.swing.*;
 
 import ButtonActionListener.*;
-import function.ScheduleMethod;
+import function.ScheduleFunction;
 
 public class MenuSelection extends JPanel { // JFrame 클래스 상속
 	
 	WindowFrame frame;
-	ScheduleMethod schfunction;
+	ScheduleFunction schfunction;
 	
-	public MenuSelection(WindowFrame frame, ScheduleMethod schfunction) {
+	public MenuSelection(WindowFrame frame, ScheduleFunction schfunction) {
 		this.frame = frame;
 		this.setLayout(new BorderLayout());
 		
@@ -26,12 +26,12 @@ public class MenuSelection extends JPanel { // JFrame 클래스 상속
 		JButton button5 = new JButton("View all Schedule"); // 모든 스케줄 표시 버튼 추가
 		JButton button6 = new JButton("Exit program"); // 프로그램 종료 버튼 추가
 		
-		button1.addActionListener(new AddmenuListener(frame));
-		button2.addActionListener(new DelSerialListener(frame));
-		button3.addActionListener(new EditSerialListener(frame));
-		button4.addActionListener(new ViewSerialListener(frame));
-		button5.addActionListener(new AllViewListener(frame));
-		button6.addActionListener(new ExitListener(frame));
+		button1.addActionListener(new AddmenuL(frame));
+		button2.addActionListener(new DelSerialL(frame));
+		button3.addActionListener(new EditSerialL(frame));
+		button4.addActionListener(new ViewSerialL(frame));
+		button5.addActionListener(new AllViewL(frame));
+		button6.addActionListener(new ExitL(frame));
 		
 		panel1.add(label); // 메뉴 선택 제목이 포함된 패널1을 추가함
 		panel2.add(button1); 

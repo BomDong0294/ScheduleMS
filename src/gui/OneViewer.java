@@ -5,22 +5,22 @@ import java.util.Vector;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import ButtonActionListener.MenuListener;
+import ButtonActionListener.MenuL;
 import data.InputInterface;
-import function.ScheduleMethod;
+import function.ScheduleFunction;
 
 public class OneViewer extends JPanel { // 표시하는 클래스는 JFrame클래스를 상속받음
 	
 	WindowFrame frame;
-	ScheduleMethod schfunction;
+	ScheduleFunction schfunction;
 	
-	public OneViewer(WindowFrame frame, ScheduleMethod schfunction) {
+	public OneViewer(WindowFrame frame, ScheduleFunction schfunction) {
 		this.frame = frame;
 		this.schfunction = schfunction;
 		this.setLayout(new BorderLayout());
 		JPanel panel1 = new JPanel();
 		
-		if (schfunction.size() == 0) return;
+		if (schfunction == null) return;
 		
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("Category");
@@ -68,7 +68,7 @@ public class OneViewer extends JPanel { // 표시하는 클래스는 JFrame클�
 		model.addRow(row);
 		
 		JButton button1 = new JButton("Exit"); // execute버튼 추가
-		button1.addActionListener(new MenuListener(frame));
+		button1.addActionListener(new MenuL(frame));
 		panel1.add(button1);
 		
 		JTable table = new JTable(model); // JTable에 모델을 추가함

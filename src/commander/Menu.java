@@ -1,7 +1,7 @@
 package commander;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import function.ScheduleMethod;
+import function.ScheduleFunction;
 import gui.WindowFrame;
 import log.EventLogger;
 public class Menu {
@@ -12,8 +12,8 @@ public class Menu {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		
-		ScheduleMethod schedule_method = ScheduleMethod.getInstance();  // 단일 ScheduleMethod 인스턴스 생
-		ScheduleMethod schfunction = EventLogger.getObject("ScheduleMethod.ser");
+		ScheduleFunction schedule_method = ScheduleFunction.getInstance();  // 단일 ScheduleMethod 인스턴스 생
+		ScheduleFunction schfunction = EventLogger.getObject("ScheduleFunction.ser");
 		if (schfunction != null) {
 			schedule_method.copyFrom(schfunction); // SchManager 클래스 호출
 		}
@@ -24,7 +24,7 @@ public class Menu {
 		System.out.println("The Program is ended."); //프로그램 종료 알림
 	}
 	
-	public static void selectMenu(Scanner input, ScheduleMethod schfunction) {
+	public static void selectMenu(Scanner input, ScheduleFunction schfunction) {
 		int num = 0; // 단축번호 변수 선언 및 초기화
 		while (num != 6) { // 6이 나올때까지 반복
 			try {

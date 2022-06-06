@@ -1,17 +1,17 @@
-package gui;
+package guiAdder;
 
 import javax.swing.*;
-
-import ButtonActionListener.EditSaveL;
-import ButtonActionListener.MenuL;
+import ButtonActionListener.*;
 import function.ScheduleFunction;
+import gui.SpringUtilities;
+import gui.WindowFrame;
 
-public class Editor extends JPanel {
+public class MeetingAdder extends JPanel {
 	
 	WindowFrame frame;
-	ScheduleFunction schfunction;
+	ScheduleFunction schfunction;;
 
-	public Editor(WindowFrame frame, ScheduleFunction schfunction) {
+	public MeetingAdder(WindowFrame frame, ScheduleFunction schfunction) {
 		this.frame = frame;
 		
 		JPanel panel = new JPanel();
@@ -56,15 +56,27 @@ public class Editor extends JPanel {
 		panel.add(labelMinute);
 		panel.add(fieldMinute);
 		
+		JLabel labelPeoplecount = new JLabel("How many people participate : ", JLabel.TRAILING);
+		JTextField fieldPeoplecount = new JTextField(10);
+		labelPeoplecount.setLabelFor(fieldPeoplecount);
+		panel.add(labelPeoplecount);
+		panel.add(fieldPeoplecount);
+		
+		JLabel labelSchhour = new JLabel("Meeting hour : ", JLabel.TRAILING);
+		JTextField fieldSchhour = new JTextField(10);
+		labelSchhour.setLabelFor(fieldSchhour);
+		panel.add(labelSchhour);
+		panel.add(fieldSchhour);
+		
 		JButton button1 = new JButton("Save");
-		button1.addActionListener(new EditSaveL(frame));
+		button1.addActionListener(new MeetingSaveL(frame));
 		panel.add(button1); // save버튼 추가
 		
 		JButton button2 = new JButton("Cancel"); // cancel버튼 추가
 		button2.addActionListener(new MenuL(frame));
 		panel.add(button2);
 		
-		SpringUtilities.makeCompactGrid(panel, 7, 2, 6, 6, 6, 6);
+		SpringUtilities.makeCompactGrid(panel, 9, 2, 6, 6, 6, 6);
 		// 간단한 틀을 하나 추가해줌
 
 		this.add(panel);

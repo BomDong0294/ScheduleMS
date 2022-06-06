@@ -11,7 +11,7 @@ import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-import function.ScheduleMethod;
+import function.ScheduleFunction;
 
 public class EventLogger {
 	FileHandler filehandler;
@@ -35,13 +35,13 @@ public class EventLogger {
 		logger.info(logMessage);
 	} // 로그 메시지를 저장하는 함수.
 	
-	public static ScheduleMethod getObject(String filename) {
-		ScheduleMethod schfunction = null;
+	public static ScheduleFunction getObject(String filename) {
+		ScheduleFunction schfunction = null;
 		FileInputStream file;
 		try { // 파일로 받아들이고 readObject()를 통해서 객체를 받아옴.
 			file = new FileInputStream(filename);
 			ObjectInputStream in = new ObjectInputStream(file);
-			schfunction = (ScheduleMethod)in.readObject();
+			schfunction = (ScheduleFunction)in.readObject();
 			in.close();
 			file.close();
 		} catch (FileNotFoundException e) {
@@ -56,7 +56,7 @@ public class EventLogger {
 		return schfunction;
 	}
 	
-	public static void putObject(ScheduleMethod schfunction, String filename) {
+	public static void putObject(ScheduleFunction schfunction, String filename) {
 		try { // 객체를 텍스트 파일에 작성함.
 			FileOutputStream file = new FileOutputStream(filename);
 			ObjectOutputStream out = new ObjectOutputStream(file);

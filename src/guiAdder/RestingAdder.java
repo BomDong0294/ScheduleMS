@@ -1,17 +1,20 @@
-package gui;
+package guiAdder;
 
 import javax.swing.*;
 
-import ButtonActionListener.EditSaveL;
+import ButtonActionListener.MeetingAddL;
 import ButtonActionListener.MenuL;
+import ButtonActionListener.RestingSaveL;
 import function.ScheduleFunction;
+import gui.SpringUtilities;
+import gui.WindowFrame;
 
-public class Editor extends JPanel {
+public class RestingAdder extends JPanel {
 	
 	WindowFrame frame;
-	ScheduleFunction schfunction;
+	ScheduleFunction schfunction;;
 
-	public Editor(WindowFrame frame, ScheduleFunction schfunction) {
+	public RestingAdder(WindowFrame frame, ScheduleFunction schfunction) {
 		this.frame = frame;
 		
 		JPanel panel = new JPanel();
@@ -44,20 +47,20 @@ public class Editor extends JPanel {
 		panel.add(labelDay);
 		panel.add(fieldDay);
 		
-		JLabel labelHour = new JLabel("Hour : ", JLabel.TRAILING);
-		JTextField fieldHour = new JTextField(10);
-		labelHour.setLabelFor(fieldHour);
-		panel.add(labelHour);
-		panel.add(fieldHour);
+		JLabel labelPeoplecount = new JLabel("How many people participate : ", JLabel.TRAILING);
+		JTextField fieldPeoplecount = new JTextField(10);
+		labelPeoplecount.setLabelFor(fieldPeoplecount);
+		panel.add(labelPeoplecount);
+		panel.add(fieldPeoplecount);
 		
-		JLabel labelMinute = new JLabel("Minute : ", JLabel.TRAILING);
-		JTextField fieldMinute = new JTextField(10);
-		labelMinute.setLabelFor(fieldMinute);
-		panel.add(labelMinute);
-		panel.add(fieldMinute);
+		JLabel labelSchDay = new JLabel("Resting Days : ", JLabel.TRAILING);
+		JTextField fieldSchDay = new JTextField(10);
+		labelSchDay.setLabelFor(fieldSchDay);
+		panel.add(labelSchDay);
+		panel.add(fieldSchDay);
 		
 		JButton button1 = new JButton("Save");
-		button1.addActionListener(new EditSaveL(frame));
+		button1.addActionListener(new RestingSaveL(frame));
 		panel.add(button1); // save버튼 추가
 		
 		JButton button2 = new JButton("Cancel"); // cancel버튼 추가
