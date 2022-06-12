@@ -2,17 +2,19 @@ package guiAdder;
 
 import javax.swing.*;
 import ButtonActionListener.*;
-import function.ScheduleFunction;
+import ButtonActionListenerSave.MeetingSaveL;
+import commander.ScheduleFunction;
 import gui.SpringUtilities;
 import gui.WindowFrame;
 
 public class MeetingAdder extends JPanel {
 	
 	WindowFrame frame;
-	ScheduleFunction schfunction;;
+	ScheduleFunction schfunction;
 
 	public MeetingAdder(WindowFrame frame, ScheduleFunction schfunction) {
 		this.frame = frame;
+		this.schfunction = schfunction;
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
@@ -69,7 +71,8 @@ public class MeetingAdder extends JPanel {
 		panel.add(fieldSchhour);
 		
 		JButton button1 = new JButton("Save");
-		button1.addActionListener(new MeetingSaveL(frame));
+		button1.addActionListener(new MeetingSaveL(frame, fieldSerial, fieldYear, fieldMonth,
+				fieldDay, fieldHour, fieldMinute, fieldPeoplecount, fieldSchhour, schfunction));
 		panel.add(button1); // save버튼 추가
 		
 		JButton button2 = new JButton("Cancel"); // cancel버튼 추가

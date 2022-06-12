@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 import ButtonActionListener.*;
-import function.ScheduleFunction;
+import commander.ScheduleFunction;
 
 public class MenuSelection extends JPanel { // JFrame 클래스 상속
 	

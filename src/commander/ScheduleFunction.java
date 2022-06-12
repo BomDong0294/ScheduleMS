@@ -1,4 +1,4 @@
-package function;
+package commander;
 import java.io.Serializable;
 import java.util.*;
 import data.*;
@@ -7,13 +7,57 @@ public class ScheduleFunction implements Serializable{
 	// 직렬화 인터페이스를 상속받음.
 	private static final long serialVersionUID = 5558847185368508745L;
 	// 직렬화를 시킴.
-	public ArrayList<InputInterface> schedule_list = new ArrayList<InputInterface>(); // 스케줄 리스트 선언
-	
-	public void copyFrom(ScheduleFunction other) {
-		schedule_list = other.schedule_list;
+	ArrayList<InputInterface> schedule_list = new ArrayList<InputInterface>(); // 스케줄 리스트 선언
+	transient Scanner input;
+	ScheduleFunction(Scanner input) {
+		this.input = input;
 	}
 	
-	public void addSchedule(Scanner input) { // 스케줄 추가 메서드
+	public void setScanner(Scanner input) {
+		this.input = input;
+	}
+	
+	public void addMeetingSchedule(int snum, int year, int mon, int day, int hour, int min, int peoplecount, int schhour) {
+		InputInterface scheduleInput = new Meeting(Kind.Meeting); 
+		scheduleInput.getScheduleInput(input);
+		schedule_list.add(scheduleInput); // 추가된 메서드를 리스트에 추가
+	}
+	
+	public void addMeetingSchedule(InputInterface scheduleInput) {
+		schedule_list.add(scheduleInput); // 추가된 메서드를 리스트에 추가
+	}
+	
+	public void addShoppingSchedule(int snum, int year, int mon, int day, int hour, int min, int peoplecount, int money) {
+		InputInterface scheduleInput = new Shopping(Kind.Shopping); 
+		scheduleInput.getScheduleInput(input);
+		schedule_list.add(scheduleInput); // 추가된 메서드를 리스트에 추가
+	}
+	
+	public void addShoppingSchedule(InputInterface scheduleInput) {
+		schedule_list.add(scheduleInput); // 추가된 메서드를 리스트에 추가
+	}
+	
+	public void addStudyingSchedule(int snum, int year, int mon, int day, int hour, int min, int peoplecount, int schhour) {
+		InputInterface scheduleInput = new Study(Kind.Studying); 
+		scheduleInput.getScheduleInput(input);
+		schedule_list.add(scheduleInput); // 추가된 메서드를 리스트에 추가
+	}
+	
+	public void addStudyingSchedule(InputInterface scheduleInput) {
+		schedule_list.add(scheduleInput); // 추가된 메서드를 리스트에 추가
+	}
+	
+	public void addRestingSchedule(int snum, int year, int mon, int day, int peoplecount, int schday) {
+		InputInterface scheduleInput = new Rest(Kind.Resting); 
+		scheduleInput.getScheduleInput(input);
+		schedule_list.add(scheduleInput); // 추가된 메서드를 리스트에 추가
+	}
+	
+	public void addRestingSchedule(InputInterface scheduleInput) {
+		schedule_list.add(scheduleInput); // 추가된 메서드를 리스트에 추가
+	}
+	
+	public void addSchedule() { // 스케줄 추가 메서드
 		InputInterface scheduleInput; // 스케줄 객체 선언
 		int kind = 0;
 		while (kind < 1 || kind > 4) {
@@ -55,7 +99,7 @@ public class ScheduleFunction implements Serializable{
 				if (input.hasNext()) {
 					input.next();
 				}
-				kind = 0;
+				kind = -1;
 				System.out.println("-------------------------Retype-----------------------");
 			}
 		}
@@ -63,7 +107,7 @@ public class ScheduleFunction implements Serializable{
 		System.out.println("------------------------------------------------------");
 	}
 	
-	public void deleteSchedule(Scanner input) { // 스케줄 삭제
+	public void deleteSchedule() { // 스케줄 삭제
 		System.out.print("Type your schedule serial number : ");
 		int serial = input.nextInt(); // 고유 번호 입력
 		int index = findIndex(serial);
@@ -94,7 +138,7 @@ public class ScheduleFunction implements Serializable{
 		}
 	}
 	
-	public void editSchedule(Scanner input) { // 스케줄 편집
+	public void editSchedule() { // 스케줄 편집
 		System.out.print("Type Your Serial number : ");
 		int serial = input.nextInt(); // 고유 번호 입력
 		int index = -1;
@@ -113,7 +157,7 @@ public class ScheduleFunction implements Serializable{
 		System.out.println("------------------------------------------------------");
 	}
 	
-	public void viewOneSchedule(Scanner input) { // 특정 스케줄 출력 메서드
+	public void viewOneSchedule() { // 특정 스케줄 출력 메서드
 		System.out.print("Type Your Serial number : ");
 		int serial = input.nextInt(); // 고유번호 입력
 		boolean flag = false;// 데이터 유무 판별을 위한 boolean형의 변수 선언
@@ -138,7 +182,7 @@ public class ScheduleFunction implements Serializable{
 		} else if (schedule_list.size() == 1) { // 리스트에 하나라도 정보가 있으면
 			for (int i=0; i<schedule_list.size();i++) { // 스케줄 리스트의 크기만큼 반복
 				schedule_list.get(i).printInfo(); // 리스트 내의 정보를 각자 자식 클래스의 출력 메서드에서 출력
-				System.out.println(""); // 줄 띄우기
+				System.out.println(); // 줄 띄우기
 			}
 			System.out.printf("there is %d schedule in database.\n", schedule_list.size());
 		} else { // 리스트에 하나라도 정보가 있으면
@@ -153,19 +197,10 @@ public class ScheduleFunction implements Serializable{
 	}
 	
 	public InputInterface get(int index) {
-		return (Schedule) schedule_list.get(index);
+		return (Schedule)schedule_list.get(index);
 	}
 	
 	public int size() {
 		return schedule_list.size();
 	}
-	
-	public static ScheduleFunction getInstance() {
-		if (_s_instance == null) {
-			_s_instance = new ScheduleFunction();
-		}
-		return _s_instance;
-	}
-	
-	private static ScheduleFunction _s_instance = null;
 }

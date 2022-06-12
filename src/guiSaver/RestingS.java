@@ -5,7 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.*;
 
 import ButtonActionListener.*;
-import function.ScheduleFunction;
+import commander.ScheduleFunction;
 import gui.WindowFrame;
 
 public class RestingS extends JPanel{

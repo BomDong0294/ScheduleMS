@@ -1,13 +1,14 @@
 package gui;
 
 import javax.swing.*;
-import function.ScheduleFunction;
+import commander.ScheduleFunction;
 import guiAdder.*;
 import guiSaver.*;
 import serialChecker.*;
 
 public class WindowFrame extends JFrame {
 	ScheduleFunction schfunction;
+	
 	MenuSelection menuselection;
 	AdderMenu addermenu;
 	MeetingAdder meetingadder;
@@ -18,14 +19,15 @@ public class WindowFrame extends JFrame {
 	StudyingS studyingsaver;
 	RestingAdder restingadder;
 	RestingS restingsaver;
-	AllViewer allviewer;
+	
 	DelSerialC delserialchecker;
 	DeleteS deletes;
 	EditSerialC editserialchecker;
 	EditS edits;
-	ViewSerialC viewserialchecker;
 	Editor editor;
+	ViewSerialC viewserialchecker;
 	OneViewer oneviewer;
+	AllViewer allviewer;
 
 	public WindowFrame(ScheduleFunction schfunction) {
 		this.setSize(800, 400); // 창의 크기를 지정
@@ -135,14 +137,6 @@ public class WindowFrame extends JFrame {
 		this.restingsaver = restingsaver;
 	}
 	
-	public AllViewer getViewer() {
-		return allviewer;
-	}
-
-	public void setViewer(AllViewer viewer) {
-		this.allviewer = viewer;
-	}
-	
 	public AdderMenu getAdderMenu() {
 		return addermenu;
 	}
@@ -150,7 +144,7 @@ public class WindowFrame extends JFrame {
 	public void setAdderMenu(AdderMenu addermenu) {
 		this.addermenu = addermenu;
 	}
-	
+	//2
 	public DelSerialC getDelSerialChecker() {
 		return delserialchecker;
 	}
@@ -165,7 +159,7 @@ public class WindowFrame extends JFrame {
 	public void setDeletes(DeleteS deletes) {
 		this.deletes = deletes;
 	}
-	
+	//3
 	public EditSerialC getEditSerialChecker() {
 		return editserialchecker;
 	}
@@ -189,7 +183,7 @@ public class WindowFrame extends JFrame {
 	public void setEdits(EditS edits) {
 		this.edits = edits;
 	}
-
+	//4
 	public ViewSerialC getViewserialchecker() {
 		return viewserialchecker;
 	}
@@ -205,5 +199,12 @@ public class WindowFrame extends JFrame {
 	public void setOneviewer(OneViewer oneviewer) {
 		this.oneviewer = oneviewer;
 	}
+	//5
+	public AllViewer getViewer() {
+		return allviewer;
+	}
 
+	public void setViewer(AllViewer viewer) {
+		this.allviewer = viewer;
+	}
 }

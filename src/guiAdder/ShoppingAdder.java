@@ -2,10 +2,10 @@ package guiAdder;
 
 import javax.swing.*;
 
-import ButtonActionListener.MeetingAddL;
 import ButtonActionListener.MenuL;
-import ButtonActionListener.ShoppingSaveL;
-import function.ScheduleFunction;
+import ButtonActionListenerAdd.MeetingAddL;
+import ButtonActionListenerSave.ShoppingSaveL;
+import commander.ScheduleFunction;
 import gui.SpringUtilities;
 import gui.WindowFrame;
 
@@ -72,7 +72,8 @@ public class ShoppingAdder extends JPanel {
 		panel.add(fieldMoney);
 		
 		JButton button1 = new JButton("Save");
-		button1.addActionListener(new ShoppingSaveL(frame));
+		button1.addActionListener(new ShoppingSaveL(frame, fieldSerial, fieldYear, fieldMonth,
+				fieldDay, fieldHour, fieldMinute, fieldPeoplecount, fieldMoney, schfunction));
 		panel.add(button1); // save버튼 추가
 		
 		JButton button2 = new JButton("Cancel"); // cancel버튼 추가

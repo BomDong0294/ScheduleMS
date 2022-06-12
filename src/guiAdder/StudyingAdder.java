@@ -3,7 +3,8 @@ package guiAdder;
 import javax.swing.*;
 
 import ButtonActionListener.*;
-import function.ScheduleFunction;
+import ButtonActionListenerSave.StudyingSaveL;
+import commander.ScheduleFunction;
 import gui.*;
 
 public class StudyingAdder extends JPanel {
@@ -69,7 +70,8 @@ public class StudyingAdder extends JPanel {
 		panel.add(fieldSchhour);
 		
 		JButton button1 = new JButton("Save");
-		button1.addActionListener(new StudyingSaveL(frame));
+		button1.addActionListener(new StudyingSaveL(frame, fieldSerial, fieldYear, fieldMonth,
+				fieldDay, fieldHour, fieldMinute, fieldPeoplecount, fieldSchhour, schfunction));
 		panel.add(button1); // save버튼 추가
 		
 		JButton button2 = new JButton("Cancel"); // cancel버튼 추가

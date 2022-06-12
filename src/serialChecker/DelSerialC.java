@@ -5,17 +5,17 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import ButtonActionListener.DeleteL;
-import function.ScheduleFunction;
+import commander.ScheduleFunction;
 import gui.WindowFrame;
 import guiSaver.DeleteS;
 
 public class DelSerialC extends JPanel{
-	
 	WindowFrame frame;
 	ScheduleFunction schfunction;
 
 	public DelSerialC(WindowFrame frame, ScheduleFunction schfunction) {
 		this.frame = frame;
+		this.schfunction = schfunction;
 		this.setLayout(new BorderLayout());
 		JPanel panel1 = new JPanel();
 		JPanel panel2 = new JPanel();
@@ -26,7 +26,7 @@ public class DelSerialC extends JPanel{
 		panel1.add(fieldSerial);
 		
 		JButton button1 = new JButton("Execute"); // execute버튼 추가
-		button1.addActionListener(new DeleteL(frame));
+		button1.addActionListener(new DeleteL(frame, fieldSerial, schfunction));
 		panel2.add(button1);
 		
 		this.add(panel1, BorderLayout.NORTH);

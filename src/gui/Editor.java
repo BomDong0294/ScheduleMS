@@ -4,7 +4,7 @@ import javax.swing.*;
 
 import ButtonActionListener.EditSaveL;
 import ButtonActionListener.MenuL;
-import function.ScheduleFunction;
+import commander.ScheduleFunction;
 
 public class Editor extends JPanel {
 	
@@ -57,7 +57,8 @@ public class Editor extends JPanel {
 		panel.add(fieldMinute);
 		
 		JButton button1 = new JButton("Save");
-		button1.addActionListener(new EditSaveL(frame));
+		button1.addActionListener(new EditSaveL(frame, fieldSerial, fieldYear,
+				fieldMonth, fieldDay, fieldHour, fieldDay, schfunction));
 		panel.add(button1); // save버튼 추가
 		
 		JButton button2 = new JButton("Cancel"); // cancel버튼 추가

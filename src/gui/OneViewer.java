@@ -6,8 +6,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import ButtonActionListener.MenuL;
+import commander.ScheduleFunction;
 import data.InputInterface;
-import function.ScheduleFunction;
 
 public class OneViewer extends JPanel { // 표시하는 클래스는 JFrame클래스를 상속받음
 	
@@ -40,7 +40,7 @@ public class OneViewer extends JPanel { // 표시하는 클래스는 JFrame클�
 				i = j;
 			}
 		}
-
+/*
 		Vector row = new Vector();
 		InputInterface in = schfunction.get(i);
 		row.add(in.getKind());
@@ -66,7 +66,7 @@ public class OneViewer extends JPanel { // 표시하는 클래스는 JFrame클�
 			break;
 		}
 		model.addRow(row);
-		
+*/		
 		JButton button1 = new JButton("Exit"); // execute버튼 추가
 		button1.addActionListener(new MenuL(frame));
 		panel1.add(button1);

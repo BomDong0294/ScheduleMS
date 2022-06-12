@@ -3,26 +3,11 @@ package data;
 import java.util.Scanner;
 
 public class Shopping extends Schedule { // 일반 스케줄 클래스를 상속받음
-	
 	private static final long serialVersionUID = 1158286935571549727L;
-	// 직렬화를 하였음.
-	protected int money; // 돈 변수 선언
-
+	
 	public Shopping(Kind kind) {
 		super(kind);
 	} // 쇼핑 스케줄 kind 변수만 있는 생성자 선언 
-	
-	public Shopping(Kind kind, int snum, int year, int mon, int day, int hour, int min, int peoplecount, int money) {
-		super(kind);
-		this.snum = snum;
-		this.year = year;
-		this.mon = mon;
-		this.day = day;
-		this.hour = hour;
-		this.min = min;
-		this.peoplecount = peoplecount;
-		this.money = money;
-	} // 쇼핑 스케줄 생성자 선언 및 저장
 
 	public void getScheduleInput(Scanner input) { // shopping에 맞는 추상화된 스케줄 입력 메서드 선언
 		setSerial(input);
@@ -45,18 +30,6 @@ public class Shopping extends Schedule { // 일반 스케줄 클래스를 상속
 			System.out.printf("%d person go to the shopping.\n", peoplecount); // 참여 인원수 출력
 		}
 	}
-	
-	public void setMoney(InputInterface schedule, Scanner input) {
-		System.out.print("How much money do you have? : ");
-		int money = input.nextInt();
-		this.setMoney(money); // 돈 변수 초기화
-	}
-
-	public void setPeoplecount(InputInterface schedule, Scanner input) {
-		System.out.print("How many people go shopping with you? : ");
-		int peoplecount = input.nextInt();
-		this.setPeoplecount(peoplecount+1); // 추가된 인원에 자신을 추가한 값을 저장함
-	}
 
 	public void setShoppingsch(Scanner input) {
 		char res = 'a';
@@ -64,64 +37,20 @@ public class Shopping extends Schedule { // 일반 스케줄 클래스를 상속
 			System.out.print("Does some people participates? : (Y/N) : ");
 			res = input.next().charAt(0); // 만약 혼자 쇼핑을 하지 않는다면?
 			if (res == 'y' || res == 'Y') {
-				setPeoplecount(this, input);
-				setMoney(this, input);
+				setPeoplecount(input);
+				setMoney(input);
 				break;
 			} else if (res == 'n' || res == 'N') {
-				this.setPeoplecount(1); // 혼자만 가므로 1을 저장
-				setMoney(this, input);
+				System.out.println("Type 1.");
+				int a = 0;
+				while (a != 1) {
+					setPeoplecount(input);
+					if (getPeoplecount() == 1) break;
+				}
+				setMoney(input);
 				break;
 			} else {
 			}
 		}
-	}
-	
-	// money 변수에 대한 getter 및 setter
-	public int getMoney() {
-		return money;
-	}
-
-	public void setMoney(int money) {
-		this.money = money;
-	}
-	
-	public int getSerial() {
-		return snum;
-	}
-	
-	public int getYear() {
-		return year;
-	}
-	
-	public int getMonth() {
-		return mon;
-	}
-	
-	public int getDay() {
-		return day; 
-	}
-	
-	public int getHour() {
-		return hour;
-	}
-	
-	public int getMinute() {
-		return min;
-	}
-	
-	public int getPeoplecount() {
-		return peoplecount;
-	}
-
-	public int getSchhour() {
-		return 0;
-	}
-
-	public int getSchday() {
-		return 0;
-	}
-	@Override
-	public Kind getKind() {
-		return kind;
 	}
 }

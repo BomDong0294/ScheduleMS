@@ -5,9 +5,9 @@ import java.awt.BorderLayout;
 import javax.swing.*;
 
 import ButtonActionListener.*;
+import commander.ScheduleFunction;
 import data.Kind;
 import data.Meeting;
-import function.ScheduleFunction;
 import gui.WindowFrame;
 
 public class DeleteS extends JPanel{

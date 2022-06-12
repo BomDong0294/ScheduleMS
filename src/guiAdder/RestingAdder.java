@@ -2,10 +2,10 @@ package guiAdder;
 
 import javax.swing.*;
 
-import ButtonActionListener.MeetingAddL;
 import ButtonActionListener.MenuL;
-import ButtonActionListener.RestingSaveL;
-import function.ScheduleFunction;
+import ButtonActionListenerAdd.MeetingAddL;
+import ButtonActionListenerSave.RestingSaveL;
+import commander.ScheduleFunction;
 import gui.SpringUtilities;
 import gui.WindowFrame;
 
@@ -60,7 +60,8 @@ public class RestingAdder extends JPanel {
 		panel.add(fieldSchDay);
 		
 		JButton button1 = new JButton("Save");
-		button1.addActionListener(new RestingSaveL(frame));
+		button1.addActionListener(new RestingSaveL(frame, fieldSerial, fieldYear, fieldMonth,
+				fieldDay, fieldPeoplecount, fieldSchDay, schfunction));
 		panel.add(button1); // save버튼 추가
 		
 		JButton button2 = new JButton("Cancel"); // cancel버튼 추가
